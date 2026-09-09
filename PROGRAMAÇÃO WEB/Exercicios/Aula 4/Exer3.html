@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Gestão Acadêmica</title>
+</head>
+<body>
+    <form action="*">
+        <table>
+            <tr>
+                <td colspan="2"><b>MANUTENÇÃO DE USUÁRIOS DE SISTEMA INTERNO</b></td>
+            </tr>
+            
+
+            <tr>
+                <td>
+                    <label for="Login"> Login </label> 
+                </td>
+                <td>
+                    <input type="text" name="Login" id="campo_login" size="15" maxlength="30">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="campo_Senha">Senha</label>
+                </td>
+
+                <td>
+                    <input type="password" id="campo_Senha" size="15" maxlength="30">
+                </td>
+            </tr>
+
+            <tr>
+                <td>Status</td>
+                <td>
+                <select name="status">
+                    <option value="Inativo">Inativo</option>
+                    <option value="Ativo">Ativo</option>
+                </select></td>
+            </tr>
+            
+
+            <tr>
+                <td><label for="campo_Tipo">Tipo</label></td>
+                <td>
+                    <input type="radio" name="tipo" id="campo_Tipo" value="Tecnico"> Tenico
+                    <input type="radio" name="tipo" id="campo_Tipo" value="Professor"> Professor 
+                    <input type="radio" name="tipo" id="campo_Tipo" value="Aluno"> Aluno
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="campo_data">Data Criação</label></td>
+                <td>
+                    <input type="date">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="campo_perfil"> Perfil </label>
+                </td>
+
+                <td>
+                    <input type="radio" id="campo_perfil" name="perfil" value="Convidado">Convidado
+                    <input type="radio" id="campo_perfil" name="perfil" value="Administrador">Administrador
+                </td>
+            </tr>
+            <tr>
+                <td><label for="campo_obs">Observações</label></td>
+                <td>
+                   <textarea name="Observações" id="campo_obs" rows="4" cols="20"></textarea>
+                </td>
+            </tr>
+            
+            <tr>
+                <td> <label for="campo_Modulo"> Modulos</label></td>
+                <td>
+                    <input type="checkbox" name="modulo" id="campo_Modulo" value="Compras">Compras
+                    <input type="checkbox" name="modulo" id="campo_Modulo" value="Biblioteca"> Biblioteca
+                    <input type="checkbox" name="modulo" id="campo_Modulo" value="Acadêmico"> Acadêmico <br>
+                    <input type="checkbox" name="modulo" id="campo_Modulo" value="Documentação"> Documentação
+                    <input type="checkbox" name="modulo" id="campo_Modulo" value="Recursos Humanos"> Recursos Humanos 
+                </td>
+
+                <tr>
+                    <td colspan="2">
+
+                        <input type="submit" value="Cadastrar">
+                        <input type="reset" value="Excluir">
+                    </td>
+                </tr>
+
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
