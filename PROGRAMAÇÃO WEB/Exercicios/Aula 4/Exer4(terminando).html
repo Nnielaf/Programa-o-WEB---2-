@@ -34,7 +34,7 @@
                     <label for="campo_CPF"><b>CPF</b></label>
                 </td>
                 <td>
-                    <input type="text" id="campo_CPF" size="10" maxlength="15">
+                    <input type="number" id="campo_CPF" size="10" maxlength="15">
                 </td>
             </tr>
 
@@ -70,12 +70,152 @@
                     <select name="Status_civil" id="estado_civil">
                         <option value="Solteiro">Solteiro</option>
                         <option value="Casado">Casado</option>
-                        <option value="Viuvo(a)">Viuvo</option>
+                        <option value="Divorciado">Divorciado</option>
+                        <option value="Separado(a)"></option>
+                        <option value="Viúvo(a)"></option>
+                        <option value=""></option>
                     </select>
                 </td>
             </tr>
 
+            <tr>
+                <td>
+                    <label for="campo_escolaridade"><b>Escolaridade</b></label>
+                </td>
+                <td>
+                    <select name="Escolaridade" id="campo_escolaridade">
+                        <option value="Analfabeto">Analfabeto</option>
+                        <option value="Ensino Fundamental Incompleto">Ensino Fundamental Incompleto</option>
+                        <option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
+                        <option value="Ensino Médio Incompleto">Ensino Médio Incompleto</option>
+                        <option value="Ensino Médio Completo">Ensino Médio Completo</option>
+                        <option value="Ensino Superior Incompleto">Ensino Superior Incompleto</option>
+                        <option value="Ensino Superior Completo">Ensino Superior Completo</option>
+                        <option value="Pós-graduação">Pós-graduação</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="campo_ocupacaoPrincipal"><b>Ocupação Principal</b></label>
+                </td>
+                <td>
+                    <select name="Ocupação" id="campo_ocupacaoPrincipal">
+                        <option value="Empregado">Empregado</option>
+                        <option value="Autônomo">Autônomo</option>
+                        <option value="Estudante">Estudante</option>
+                        <option value="Desempregado">Desempregado</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="campo_renda"><b>Renda Mensal</b></label>
+                </td>
+                <td>
+                    <select name="salrios_minimos" id="campo_renda">
+                            <option value="Até 1 salário mínimo">Até 1 salário mínimo </option>
+                            <option value="De 1 a 2 salários mínimos">De 1 a 2 salários mínimos</option>
+                            <option value="De 2 a 10 salários mínimos">De 2 a 10 salários mínimos</option>
+                            <option value="De 10 a 20 salários mínimos">De 10 a 20 salários mínimos</option>
+                            <option value="Acima de 20 salrios_minimos">Acima de 20 salários minimos</option>
+                    </select>
+                 </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="campo_dependentes"><b>Número de dependentes</b></label>
+                </td>
+                <td>
+                    <input type="number" id="campo_dependentes" name="dependentes" min="0"  max="20" value="0"> 
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="campo_telefone"><b>Telefone</b></label>
+                </td>
+
+                <td>
+                    <input type="text" id="campo_telefone" name="telefone" size="9" maxlength="11" value="00000-0000">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="campo_email"><b>Email</b></label>
+                </td>
+
+                <td>
+                    <input type="email" id="campo_email">
+                </td>
+            </tr>
+
             
+            
+            <tr>
+                <td><label for="campo_localizacao"><b>Localização</b></label></td>
+            <td>
+                <select name="Estado" id="campo_localizacao">
+            <option value="">Selecione...</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP">São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+            </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="campo_Urgencia"><b>Urgência:</b></label>
+                </td>
+            
+                <td>
+                <input type="radio" name="urgencia" id="campo_Urgencia" value="Baixo"> Baixo 
+                <input type="radio" name="urgencia" id="campo_Urgencia" value="Medio"> Medio
+                <input type="radio" name="urgencia" id="campo_Urgencia" value="Alto"> Alto
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="campo_mensagem"><b>Mensagem:</b> </label>     
+                </td>
+
+                <td>
+                    <textarea name="mensagem" id="campo_mensagem"></textarea>
+                </td>
+            </tr>    
+
+            <tr>
+                
+            </tr>
+        
         </table>
     </form>
 </body>
