@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>K19 - Seletores - 1</title>
+    <link rel="stylesheet" type="text/css" href="seletores-basicos.css">
+</head>
+<body>
+    <div id="conteudo">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+        <ul>
+            <li>Item 1</li>
+            <li class="cancelado">Item 2</li>
+            <li>
+                Item 3
+                <ul>
+                    <li>Subitem 1</li>
+                    <li>Subitem 2</li>
+                </ul>
+            </li>
+            <li class="cancelado">Item 4</li>
+        </ul>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+</body>
+</html>
+
+//PARTE CSS
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #ddd;
+}
+
+#conteudo {
+    width: 800px;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.cancelado {
+    text-decoration: line-through;
+}
+
+ul {
+    padding: 0 0 0 40px;
+}
+
+ul li {
+    color: blue;
+}
+
+#conteudo > ul > li {
+    margin: 0 0 20px 0;
+}
+
+ul + p {
+    color: red;
+}
+
+ul ~ p {
+    font-style: italic;
+}
