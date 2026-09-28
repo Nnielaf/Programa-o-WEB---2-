@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercício de Seletores Adjacentes</title>
+    <style>
+        a:link {
+    color: #333;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 5px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+a:visited {
+    color: #555;
+}
+
+a:active {
+    color: #000;
+}
+
+a.stl1:hover {
+    color: #e74c3c;
+}
+
+a.stl2:hover {
+    font-size: 22px;
+}
+
+a.stl3:hover {
+    background-color: #f1c40f;
+    color: #000;
+}
+
+a.stl4:hover {
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+}
+
+a.stl5:hover {
+    border: 2px solid #2ecc71;
+    border-radius: 4px;
+}
+
+    </style>
+</head>
+<body>
+<p>
+<a class="stl1" href="">Muda de cor </a><hr />
+<a class="stl2" href="">Muda o tamanho das letras</a><hr />
+<a class="stl3" href="">Muda a cor de fundo </a><hr />
+<a class="stl4" href="">Muda o tipo de letra </a><hr />
+<a class="stl5" href="">Muda a borda </a>
+</p>
+
+</body>
+</html>
