@@ -6,12 +6,12 @@ body {
 table {
   width: 100%;
   max-width: 900px;
-  border: 3px solid #009a44;           /* borda verde externa */
-  /* border-collapse: collapse;  <- descomente para ver a diferença */
+  border: 3px solid #009a44;           
+  
 }
 
 caption {
-  background-color: #d7d600;           /* amarelo do título */
+  background-color: #d7d600;           
   color: #009a44;
   font-size: 28px;
   padding: 6px;
@@ -29,10 +29,9 @@ th {
 }
 
 tbody tr {
-  background-color: #dfe8d6;           /* verde acinzentado das linhas */
+  background-color: #dfe8d6;         
 }
 
-/* coluna Time: nome à esquerda, escudo à direita */
 .time {
   font-size: 22px;
 }
@@ -48,7 +47,6 @@ tbody tr {
 .qtd  { text-align: center; font-size: 22px; }
 .anos { text-align: right;  font-size: 22px; }
 
-/* efeito roll-over: letra verde e fundo amarelo */
 tbody tr:hover {
   background-color: yellow;
   color: green;
