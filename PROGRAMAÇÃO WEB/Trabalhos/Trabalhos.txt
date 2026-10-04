@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Campeões Brasileiros da Libertadores</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <table>
+    <caption>Campeões Brasileiros da Libertadores</caption>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Qtd</th>
+        <th>Ano(s)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="time"><span>São Paulo</span><img src="imagens/saopaulo.png" alt="Escudo do São Paulo"></td>
+        <td class="qtd">3</td>
+        <td class="anos">1992, 1993 e 2005</td>
+      </tr>
+      <tr>
+        <td class="time"><span>Cruzeiro</span><img src="imagens/cruzeiro.png" alt="Escudo do Cruzeiro"></td>
+        <td class="qtd">2</td>
+        <td class="anos">1976 e 1997</td>
+      </tr>
+      <tr>
+        <td class="time"><span>Grêmio</span><img src="imagens/gremio.png" alt="Escudo do Grêmio"></td>
+        <td class="qtd">2</td>
+        <td class="anos">1983 e 1995</td>
+      </tr>
+      <tr>
+        <td class="time"><span>Santos</span><img src="imagens/santos.png" alt="Escudo do Santos"></td>
+        <td class="qtd">2</td>
+        <td class="anos">1962 e 1963</td>
+      </tr>
+      <tr>
+        <td class="time"><span>Inter</span><img src="imagens/inter.png" alt="Escudo do Internacional"></td>
+        <td class="qtd">1</td>
+        <td class="anos">2006</td>
+      </tr>
+      <tr>
+        <td class="time"><span>Palmeiras</span><img src="imagens/palmeiras.png" alt="Escudo do Palmeiras"></td>
+        <td class="qtd">1</td>
+        <td class="anos">1999</td>
+      </tr>
+      <tr>
+        <td class="time"><span>Vasco</span><img src="imagens/vasco.png" alt="Escudo do Vasco"></td>
+        <td class="qtd">1</td>
+        <td class="anos">1998</td>
+      </tr>
+      <tr>
+        <td class="time"><span>Flamengo</span><img src="imagens/flamengo.png" alt="Escudo do Flamengo"></td>
+        <td class="qtd">1</td>
+        <td class="anos">1981</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
