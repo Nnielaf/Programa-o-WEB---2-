@@ -1,0 +1,120 @@
+1. Seletor composto: base dos exemplos
+Todos os exemplos usam o mesmo HTML: um <article> com um <h3> e três <p>, e cada <p> contém um <a> que contém um <b>.
+Analogia de família:
+<p> é "filho" de article e "pai" de <a>.
+<a> é "neto" de article.
+Nos slides 4 a 12 os exemplos vão pintando de vermelho o que cada seletor atinge. Os slides 10 e 12 acrescentam um <h2> e um quarto <p> ao HTML para mostrar a diferença entre + e ~.
+2. Combinadores
+Combinador	Seletor	O que seleciona
+Descendente (espaço)	article a	todo <a> dentro de article, em qualquer nível
+Descendente (espaço)	article p b	todo <b> descendente de <p> que está dentro de article
+Filho direto (>)	article p > b	<b> filho direto de <p>. Nenhum é selecionado, pois o <b> está dentro do <a>
+Filho direto (>)	article p > a	todos os <a> filhos diretos de <p>
+Irmão adjacente (+)	article h3 + p	o <p> que vem imediatamente depois do <h3>
+Irmão adjacente (+)	article p + p	todo <p> que vem imediatamente depois de outro <p>
+Próximos irmãos (~)	article h3 ~ p	todos os <p> irmãos que vêm depois do <h3>
+No slide 10, p + p seleciona só o 2º e o 3º <p>. O último <p> vem depois de um <h2>, então não conta.
+No slide 12, h3 ~ p seleciona todos os <p> seguintes, inclusive o que vem depois do <h2>.
+O slide 19 propõe testar os 7 códigos, um de cada vez.
+3. Pseudo-classe :nth-child()
+Seleciona elementos pela posição entre irmãos.
+Exemplo: article:nth-child(1) a { color: red; } pega os <a> do primeiro article filho do body. O slide 14 combina duas regras (:nth-child(1) e :nth-child(3)).
+4. Seletores de atributo
+Padrão	Exemplo	O que seleciona
+[a]	[min]	elementos que têm o atributo min
+[a="v"]	[min="10"]	atributo com valor exatamente igual a 10
+[a~="v"]	[title~="k19"]	a palavra k19 aparece no valor, separada por espaços
+[a^="v"]	[href^="https"]	valor que começa com https
+[a$="v"]	[href$=".css"]	valor que termina com .css
+[a*="v"]	[title*="k19"]	a string k19 aparece em qualquer parte do valor
+[a|="v"]	[href|="https"]	ver observação nos erros, no fim
+Nos exemplos das aulas:
+a[title] pega qualquer <a> com title, até o vazio (title="").
+a[href^="http"] diferencia link externo de interno.
+img[src$="png"] pega só imagens PNG.
+Referência complementar: MDN, "Seletor de atributos".
+5. Seletor :not()
+Seleciona o que não combina com o que está entre parênteses.
+:not(a): todo elemento que não é um link.
+p:not(.destaque): todo parágrafo sem a classe destaque.
+img:not([alt]): imagens sem atributo alt, onde o exemplo aplica display: none.
+6. Tabela geral de seletores (slides 35 e 36)
+Seletor	Padrão	Exemplo
+Universal	*	* (todos os elementos)
+Tipo	e	p
+Classe	.class	.erro
+ID	#id	#conteudo
+Descendente	e1 e2	p a
+Filho	e1 > e2	p > a
+Irmão adjacente	e1 + e2	h1 + p
+Irmão	e1 ~ e2	h1 ~ p
+7. Pseudo-classes (slides 38 e 39)
+Posição e estrutura:
+:root: elemento raiz do documento.
+:nth-child(n): o n-ésimo elemento dentro de outro.
+:nth-last-child(n): o n-ésimo contando de trás para frente.
+:nth-of-type(n) e :nth-last-of-type(n): o mesmo, mas contando só elementos do mesmo tipo (a:nth-of-type(3)).
+:first-child e :last-child: primeiro e último elemento dentro de outro.
+:empty: elemento sem conteúdo.
+Links e interação:
+:link: link não visitado.
+:visited: link visitado.
+:active: link ativo (no clique).
+:hover: ponteiro sobre o elemento.
+:focus: elemento em foco (input:focus).
+:target: âncora atual.
+Formulários e idioma:
+:enabled, :disabled, :checked: inputs habilitados, desabilitados e marcados.
+:lang(pt): elementos com a linguagem indicada.
+Negação: :not(.erro), ou seja, todo elemento que não é da classe erro.
+8. Pseudo-elementos (slide 40)
+:first-line: primeira linha do parágrafo.
+:first-letter: primeira letra do parágrafo.
+:before: adiciona conteúdo antes.
+:after: adiciona conteúdo depois.
+9. Cascata
+A cascata define qual regra tem prioridade quando um elemento recebe valores conflitantes para a mesma propriedade.
+Três fontes de estilo:
+estilos padrão do navegador;
+estilos configurados pelo usuário/leitor;
+estilos do desenvolvedor (inline, incorporado e externo).
+Passo a passo para resolver o conflito:
+Reunir todas as declarações que se aplicam ao elemento e à propriedade.
+Ordenar pela origem. Do mais forte para o mais fraco: autor com !important, autor, leitor, padrão do navegador.
+Calcular a especificidade.
+Se ainda empatar, vence a última declaração no CSS.
+10. Especificidade
+Cada tipo de seletor tem um peso, e o cálculo começa em 0,0,0,0. Cada casa pesa mais que a anterior (0,0,0,1 < 0,0,1,0 < 0,1,1,1).
+Tipo	Valor	Posição
+Elementos e pseudo-elementos (div, p, :first-line)	1	0,0,0,1
+Classes, atributos e pseudo-classes (.classe, [id="x"], :hover)	10	0,0,1,0
+ID (#id)	100	0,1,0,0
+style inline	1000	1,0,0,0
+Exemplos:
+body div = 2.
+.classe[id="id"] = 20.
+#elemento #id #terceiro_id = 300.
+body div#id[class="classe"] = 2 + 100 + 10 = 112, e vence body div.classe = 2 + 10 = 12. O fundo fica azul.
+Com a mesma especificidade, vence a regra mais abaixo no CSS.
+Só !important sobrescreve o estilo inline.
+11. !important
+Força o uso da propriedade em que ele aparece.
+Exemplo: p { background-color: red; } perde para #texto { background-color: green; } (o id vence). Com red !important no p, o fundo fica vermelho.
+12. Herança
+Algumas propriedades aplicadas ao pai são herdadas pelos filhos. Exemplo: font-size: 14px na <div> vale também para o <p> dentro dela.
+O estilo próprio do filho tem prioridade sobre o herdado do pai.
+A especificidade resolve conflitos entre regras. Exemplo: com p {color: red} e div p {color: blue}, os parágrafos dentro da div ficam azuis, porque div p tem mais especificidade.
+13. Exercícios propostos
+Testar os exemplos dos slides.
+Testar os exemplos de w3schools.com/css/css_examples.asp.
+Usar o CSS Selector Tester em w3schools.com/cssref/css_selectors.asp.
+
+Erros e pontos de atenção nos slides, para você não copiar:
+
+Aspas curvas: nos slides de seletor de atributo (alt=“texto”, href=“...”) há aspas curvas (“ ”). Em HTML e CSS só valem aspas retas (").
+[a|="v"] (slide 37): o slide descreve como "atributo iniciando com https", o que é igual ao ^=. Na verdade, |= seleciona valor exatamente igual a v ou que começa com v- (usado em códigos de idioma, como lang|="pt" para pt-br). Então [href|="https"] não pega https://....
+img[alt="texto"] { color: red; } (slide 15): não tem efeito visível, porque <img> não tem texto. Para ver o seletor funcionando, use border ou background.
+:before e :after (slide 40) e :first-line e :first-letter (slide 26): estão com dois-pontos simples, que é a sintaxe antiga. O padrão atual para pseudo-elementos é :: (como você viu na Parte 1).
+Ordem da cascata (slide 24): a lista mistura origem com local do CSS. Inline, incorporado e externo não são "origens" separadas, e quem vence entre eles depende da especificidade e da ordem no arquivo. Além disso, na regra do CSS o !important do leitor vence o do autor, o contrário do que a lista sugere.
+"Tabela" (slide 28): onde está escrito "valor 300 ou tabela (0,3,0,0)", o termo correto é "tupla" (ou simplesmente "notação").
+Slides 31 e 32: o <style> vem antes do <meta charset> e do <title>. Funciona, mas o ideal é o <meta charset> ser a primeira coisa dentro do <head>.
