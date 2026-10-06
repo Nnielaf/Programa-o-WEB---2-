@@ -1,0 +1,57 @@
+1. Conceitos básicos
+
+HTML = linguagem de marcação de hipertexto
+Hiperlink: referência a outro trecho ou documento
+Não é linguagem de programação, pois não tem condicionais nem controle
+Serve para estruturar texto, imagens e links
+
+2. Tags, elementos e atributos
+
+Tag de abertura <p> e de fechamento </p> funcionam como contêineres
+Atributo: nome em minúsculas + valor entre aspas duplas, na tag de abertura (lang="pt-br", href="...")
+Elementos vazios, sem fechamento: <br>, <hr>, <meta>
+
+3. Estrutura básica do documento
+
+<!DOCTYPE html>: primeira linha, não é tag, indica a versão (HTML5)
+<html lang="pt-br">: raiz, o lang informa o idioma aos user-agents
+<head>: metadados | <body>: tudo que aparece na janela do navegador
+User-agent: string enviada em toda requisição HTTP (navegador, SO, dispositivo, bots)
+
+4. <head> e <meta>
+
+<title>: título da aba
+charset="utf-8"
+name + content: description (até 155 caracteres), keywords (sem efeito prático hoje), author, viewport, robots
+robots: index, noindex, follow, nofollow, none, noarchive
+http-equiv: content-type e refresh (atualiza a cada X segundos)
+
+5. Texto e estrutura
+
+Cabeçalhos <h1> a <h6> e parágrafo <p>
+<b> e <i>: negrito e itálico visuais
+<sup> (sobrescrito) e <sub> (subscrito)
+Colapso de espaço em branco: vários espaços ou quebras viram um só; <pre> preserva a formatação
+<br> quebra a linha e <hr> cria uma regra horizontal
+
+6. Marcação semântica
+
+Descreve o significado do conteúdo, não a aparência (leitores de tela e buscadores usam isso); o visual fica com o CSS
+<strong> (forte importância) e <em> (ênfase que muda o sentido)
+<q> (citação curta) e `` (obra citada, não nome de pessoa)
+<abbr title="..."> (abreviação) e <dfn> (definição de um termo)
+<address> (contato do autor)
+<ins> (inserido), <del> (excluído) e <s> (não mais relevante)
+<time datetime="..."> (data e hora legíveis por máquina)
+
+7. HTML5: novidades e obsoletos
+
+Semânticos de layout: <header>, <footer>, <article>, <section>
+Formulários com novos tipos (number, date, time, range)
+Gráficos (<svg>, <canvas>) e multimídia (<audio>, <video>)
+Obsoletos, passados para o CSS: <center>, <big>, <font>
+
+8. Prática
+
+Editores (VS Code, Sublime, Notepad++ etc.)
+Salvar com extensão .html e abrir no navegador
