@@ -1,0 +1,174 @@
+1. Display: block, inline e inline-block
+Valor	Comportamento	Dimensionamento
+block	Ocupa toda a largura disponível e começa em nova linha. Ex.: <h1>, <p>, <ul>, <li>, <div>	Aceita width, height, padding e margin
+inline	Ocupa só o espaço do conteúdo e não inicia nova linha. Ex.: <img>, <b>, <i>, <span>	Ignora width e height. margin e padding só funcionam na horizontal (o padding vertical aparece, mas sem afetar o layout)
+inline-block	Fica na mesma linha como o inline, mas dimensiona como o block	Aceita width, height, margin e padding em todas as direções. Alinha pela linha de base (baseline) do texto
+Usos do inline-block:
+elementos em linha que precisam de dimensionamento;
+grids simples sem flexbox/grid;
+navegação horizontal.
+2. Propriedade position
+static (padrão):
+O elemento segue o fluxo normal da página.
+Não é afetado por top, bottom, left e right.
+relative:
+O elemento é deslocado em relação à própria posição original.
+O espaço original continua ocupado, então o outro conteúdo não se ajusta para preencher a lacuna.
+Exemplo: .div3 { position: relative; left: 50px; top: 10px; }.
+absolute:
+O elemento sai do fluxo do HTML e se posiciona em relação ao ancestral mais próximo que tenha position diferente de static.
+Se não houver nenhum ancestral posicionado, usa o body.
+Exemplo com top: 10px; right: 10px:
+com o container static, o elemento se encaixa no canto do body;
+com o container relative, o elemento se encaixa dentro do container.
+Com bottom no lugar de top, o elemento iria para a parte inferior.
+fixed:
+O elemento fica fixo em relação ao navegador (a janela).
+Acompanha o scroll da página, por isso é útil em menus.
+3. z-index
+Define a ordem de empilhamento de elementos posicionados que se sobrepõem.
+Pode ser positivo ou negativo, e o padrão é 0.
+O maior valor fica na frente.
+Exemplo: uma imagem com position: absolute e z-index: -1 fica atrás do texto, e com z-index: 0 fica na frente.
+4. Estrutura de layout
+Layout tradicional: <div> com ids como page, header, nav, content, article, sidebar e footer (wireframe).
+HTML5 trouxe tags semânticas que indicam o tipo de conteúdo:
+<header>: cabeçalho do documento ou da seção.
+<nav>: links de navegação.
+<section>: seção do documento.
+<article>: seção independente.
+<aside>: área lateral.
+<footer>: rodapé do documento ou da seção.
+5. Layout com float
+float posiciona e formata conteúdo, como uma imagem flutuando ao lado do texto. Hoje existem formas melhores, mas ainda serve para navegadores antigos e manutenção de sites antigos.
+Valores: left, right, none (padrão).
+Colunas com float:
+Elementos com float: left e largura fixa ficam lado a lado.
+Quando um elemento é mais alto, o próximo pode "encaixar" ao lado dele na linha seguinte e quebrar o alinhamento.
+A solução é limpar o float com uma classe .clear { clear: left; } no elemento que deve começar uma nova linha.
+6. Layout responsivo
+Usa layouts flexíveis, imagens flexíveis e media queries.
+O objetivo é a página detectar o tamanho e a orientação da tela e adaptar o layout.
+Não se deve cortar informação para caber em telas menores, e sim adaptar o conteúdo.
+7. Media types e media queries
+Media type	Descrição
+all	Todos os tipos de mídia (padrão)
+print	Impressoras e visualização de impressão
+screen	Telas (computadores, tablets, smartphones, TVs)
+O tipo de mídia pode ser definido de duas formas:
+pelo atributo media do <link>: <link rel="stylesheet" href="aquivo.css" media="screen">;
+pela regra CSS @media screen { ... }.
+Vários tipos se separam por vírgula: @media screen, print.
+Media query: tipo de mídia + expressões que resolvem para verdadeiro ou falso.
+Sintaxe: @media not|only mediatype and (expressions) { CSS-Code; }.
+Exemplo: @media screen and (min-width: 500px) { ... }, válido quando a viewport tem pelo menos 500px de largura.
+A vírgula funciona como "ou": @media (min-width: 500px), (orientation: portrait).
+Dá para ter um arquivo CSS por media query: <link rel="stylesheet" media="..." href="print.css">.
+Propriedade	O que verifica	Suporta min/max?
+width	largura da viewport	sim
+height	altura da viewport	sim
+orientation	portrait ou landscape	não
+aspect-ratio	proporção entre largura e altura (ex.: 16/9)	sim
+resolution	resolução da tela (dpi, dppx)	sim
+8. Flexbox: conceito
+Dispõe, alinha e distribui espaço entre itens de um container, mesmo com tamanho desconhecido ou dinâmico.
+O container pode alterar largura, altura e ordem dos itens para preencher o espaço, expandindo-os se sobrar espaço ou reduzindo-os para evitar estouro.
+É independente da direção, ao contrário de block (vertical) e inline (horizontal).
+Tem main axis (eixo principal) e cross axis (eixo cruzado).
+Compatibilidade: caniuse.com.
+Para praticar: o jogo Flexbox Froggy.
+9. Flexbox: propriedades do container (pai)
+display: flex ou inline-flex: cria o contexto flex para os filhos diretos.
+flex-direction:
+row (padrão): da esquerda para a direita.
+row-reverse: da direita para a esquerda.
+column: de cima para baixo.
+column-reverse: de baixo para cima.
+flex-wrap:
+nowrap (padrão): tudo em uma linha.
+wrap: quebra em várias linhas, de cima para baixo.
+wrap-reverse: quebra de baixo para cima.
+justify-content (alinhamento no eixo principal):
+flex-start (padrão): itens no início.
+flex-end: itens no fim.
+center: itens centralizados.
+space-between: espaço entre os itens, com o primeiro e o último encostados nas bordas.
+space-around: espaço igual ao redor de cada item (nas bordas fica meia unidade, entre itens uma unidade inteira).
+space-evenly: espaço igual entre os itens e as bordas.
+align-items (alinhamento no eixo cruzado):
+stretch (padrão): estica os itens.
+flex-start: alinha no início do eixo cruzado.
+flex-end: alinha no fim do eixo cruzado.
+center: centraliza no eixo cruzado.
+baseline: alinha pelas linhas de base do texto, útil quando as fontes têm tamanhos diferentes.
+10. Flexbox: propriedades dos itens (filhos)
+Propriedade	O que faz	Padrão
+order	Muda a ordem de exibição sem alterar o HTML	0
+flex-grow	Capacidade de crescer se sobrar espaço, em proporção (1 em todos divide o espaço igualmente, 2 ocupa o dobro). Não aceita negativo	0
+flex-shrink	Capacidade de encolher se faltar espaço. 0 impede o encolhimento. Não aceita negativo	1
+flex-basis	Tamanho inicial do item antes de distribuir o espaço. Aceita comprimento (20%, 5rem) ou auto (usa width/height)	auto
+flex	Abreviação de flex-grow flex-shrink flex-basis	0 1 auto
+align-self	Sobrescreve o align-items para um item específico	auto
+Diferença do flex-basis:
+flex-basis: 0: ignora o tamanho do conteúdo e divide todo o espaço conforme o flex-grow.
+flex-basis: auto: parte do tamanho do conteúdo e divide só o espaço que sobrou.
+Exemplos de flex:
+flex: 1 = 1 1 0.
+flex: 2 = 2 1 0.
+flex: 3 2 300px = grow 3, shrink 2, basis 300px.
+float, clear e vertical-align não afetam um item flex.
+11. Flexbox vs Grid
+	Flexbox	Grid
+Dimensão	Unidimensional (linha ou coluna)	Bidimensional (linhas e colunas)
+Pontos fortes	Distribui espaço, alinha e reordena sem mexer no HTML	Layouts complexos com controle total do posicionamento
+Quando usar	Barras de navegação, botões, cards, componentes lineares	Layouts de página, dashboards, galerias, estruturas complexas
+Os dois se complementam.
+Como as tabelas, o grid alinha componentes em linhas e colunas. Mas, diferente delas, não depende da estrutura do conteúdo, e por isso permite muito mais variedade de layouts.
+12. Grid: container
+display: grid: nível de bloco, ocupa toda a largura do pai.
+display: inline-grid: nível inline, ocupa só o espaço do conteúdo.
+column-gap e row-gap: espaço entre colunas e entre linhas (ex.: 20px).
+gap: abreviação dos dois.
+gap: 50px 30px = 50px entre linhas e 30px entre colunas.
+gap: 50px = 50px nos dois.
+Grid lines: as linhas que delimitam as células. 3 colunas têm 4 linhas de coluna (Line 1 a Line 4).
+grid-template-columns define a largura de cada coluna:
+auto auto auto auto: 4 colunas.
+80px 200px auto 40px: 4 colunas com tamanhos específicos.
+grid-template-rows: define a altura de cada linha (ex.: 80px 200px).
+13. Grid: unidade fr e repeat
+fr = fração do espaço disponível no container.
+1fr 1fr 1fr: três colunas iguais.
+2fr 1fr 1fr: a primeira coluna tem o dobro da largura das outras.
+repeat(quantidade | auto-fill | auto-fit, lista-de-trilhas):
+repeat(3, 200px).
+repeat(12, 1fr): 12 colunas iguais.
+200px repeat(auto-fill, 100px) 300px.
+minmax(50px, 40%): nunca menor que 50px, pode crescer até 40% do container.
+auto-fill: "preenche tudo, mesmo vazio". Mantém o espaço reservado sem alterar a largura dos itens, e pode sobrar espaço aparente.
+auto-fit: "encaixa só o que existe". Expande os itens para preencher o espaço, sem sobrar espaço vazio.
+Vale também para grid-template-rows.
+14. Grid: alinhamento
+justify-content: alinha o grid inteiro na horizontal dentro do container (start, end, center, space-between, space-around, space-evenly). Só tem efeito se a largura total do grid for menor que a do container.
+align-content: alinha o grid inteiro na vertical. Precisa de container com altura definida maior que o grid.
+justify-items: alinha cada item na horizontal dentro da sua célula (start, end, center, stretch como padrão).
+align-items: alinha cada item na vertical dentro da célula (mesmos valores).
+15. Grid: propriedades dos itens (filhos)
+grid-column: 1 / 5: o item começa na linha 1 e termina na linha 5 (ocupa 4 colunas).
+grid-row: 1 / 4: o item começa na linha 1 e termina na linha 4 (ocupa 3 linhas).
+grid-area: dá um nome ao item (ex.: .item1 { grid-area: header; }). No container, grid-template-areas desenha o layout:
+'header header header header header header'
+'menu main main main right right'
+'menu footer footer footer footer footer'
+
+Erros e pontos de atenção nos slides, para você não copiar:
+
+Comentários com // no CSS: nos slides 45 e 61 (flex-direction: row;//elemento alterado... e flex: 1;// Define...), o // não é comentário em CSS e pode quebrar a declaração. Comentário em CSS é /* ... */.
+flex-shrink no container (slide 57): o exemplo coloca flex-shrink: 1 dentro de .container { display: flex; }. Essa propriedade vale para os itens, não para o container.
+inline-grid e margens (slide 68): o slide diz que margin top e bottom não funcionam. O inline-grid se comporta como inline-block, e as margens verticais funcionam. Isso vale para o inline puro, não para ele.
+justify-conteiner (slides 79 e 80): os títulos estão errados. O nome da propriedade é justify-content.
+align-items (slide 52): o slide diz que flex-start alinha "à margem superior" e flex-end à "inferior". Isso só vale com flex-direction: row. O alinhamento é sempre no eixo cruzado, que muda de direção se o flex-direction for column.
+align-self (slide 62): o slide fala em "Start, stretch, center e end". Em flexbox, o mais usual é flex-start e flex-end (além de center, stretch e baseline).
+Aspas curvas: no slide da estrutura tradicional (id=“page") há aspas curvas. Em HTML só valem aspas retas.
+Tabela de media types (slide 30): lista só all, print e screen, mas o slide anterior cita o sintetizador de voz. Esse tipo é o speech.
+Slide 44: "heigth" está escrito errado, o certo é "height".
