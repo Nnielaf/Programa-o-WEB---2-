@@ -1,0 +1,124 @@
+1. Tabelas: estrutura básica
+
+<table>: cria a tabela, que é construída linha a linha
+<tr>: cada linha
+<td>: cada célula, e toda célula precisa de abertura e fechamento
+Célula vazia também precisa de <td> ou <th>, senão a tabela não renderiza direito
+
+2. Cabeçalhos
+
+<th>: título de coluna ou de linha (ajuda leitores de tela, indexação e o controle de aparência com CSS)
+scope="col" ou scope="row": só para acessibilidade, não altera conteúdo nem formatação e não é obrigatório
+
+3. Mesclar células
+
+colspan="n": a célula ocupa n colunas
+rowspan="n": a célula ocupa n linhas
+Ambos valem em <td> e <th>
+
+4. Legenda e seções
+
+<caption>: legenda da tabela, logo na primeira linha depois de <table>
+<thead>, <tbody>, <tfoot>: cabeçalho, corpo e rodapé (todos opcionais)
+border="1": borda simples usada nos exemplos
+
+5. Multimídia
+
+Multimídia é qualquer recurso que se vê ou ouve
+Formatos de vídeo: MP4, WebM, Ogg
+Formatos de áudio: MP3, WAV, Ogg
+
+6. Imagens
+
+<img>: elemento vazio, sem tag de fechamento
+Atributos: src (URL), alt (texto alternativo, boa prática de acessibilidade), width e height
+Bitmap (JPG, GIF, PNG): feito de pixels, e quanto maior a resolução, maior o arquivo e mais lento carrega
+Vetor (SVG): não perde qualidade ao ampliar
+
+7. Imagens responsivas
+
+<picture> com vários <source> e um <img> de reserva no final
+media="(min-width: 480px)": condição de largura da tela
+srcset: lista de imagens com suas larguras (1280w, 960w, 480w), e o navegador escolhe a melhor
+sizes="33vw": a imagem deve ocupar 33% da largura da tela
+DPR (relação entre pixels CSS e físicos): 1 (1 pixel por px CSS), 2 (a maioria dos celulares, 4 pixels reais), 3 (celulares top, 9 pixels reais)
+
+8. Áudio e vídeo
+
+<audio src="..." controls autoplay>: formatos MP3, OGG e WAV
+<video src="..." poster="..." width height controls autoplay>: o poster é a imagem exibida antes de o vídeo carregar ou tocar
+
+9. Formulários: conceito e funcionamento
+
+Formulário coleta informações do visitante, dentro de <form>
+O envio manda pares nome/valor ao servidor (PHP, C#, VB.net, Java), que processa, pode gravar em banco de dados e devolve uma nova página
+action: URL para onde os dados vão
+method: get coloca os dados na URL, post coloca no corpo da requisição
+
+10. Campos de texto
+
+<input type="text">: linha única, com size e maxlength
+<input type="password">: mascara os caracteres
+<textarea cols rows>: texto de várias linhas
+
+11. Campos de escolha
+
+type="radio": uma opção entre várias, com o mesmo name para agrupar
+type="checkbox": uma ou mais opções
+<select> com <option>: lista suspensa (drop-down)
+<optgroup label="...">: agrupa as opções
+checked="checked": já vem marcado
+
+12. Autocomplete
+
+<datalist id="..."> com <option>, ligado ao input pelo atributo list
+
+13. Botões e envio
+
+type="submit": envia (o value é o texto do botão)
+type="reset": limpa os campos do form (o value também controla o texto)
+Botão de imagem, parecido com o de envio
+type="file": upload de arquivos
+type="search": caixa de pesquisa
+
+14. Dicas dentro do campo
+
+placeholder: dica que some quando se começa a digitar
+title: dica que aparece ao passar o mouse
+
+15. Labels e acessibilidade
+
+<label> em cada campo, de duas formas: envolvendo o campo, ou separado com for="id" ligado ao id do campo
+Em checkbox e radio, clicar no rótulo também seleciona
+Posição do rótulo: acima ou à esquerda de texto, select e file; à direita de checkbox e radio
+
+16. Agrupamento
+
+<fieldset>: agrupa campos relacionados, normalmente com uma borda
+<legend>: título do grupo, logo depois da abertura do fieldset
+
+17. Validação e novos inputs do HTML5
+
+Navegadores antigos tratam inputs novos como texto simples
+type="date", email (confere o formato com @), url
+Outros: color, hidden, month, range, tel, time, week, datetime-local
+
+18. Atributos de input
+
+Atributo	O que faz
+required	Campo obrigatório
+disabled	Campo desativado
+readonly	Somente leitura
+min / max	Valor mínimo e máximo
+maxlength	Máximo de caracteres
+size	Largura em caracteres
+pattern	Expressão regular de validação
+step	Intervalos válidos (usado no range)
+value	Valor padrão
+
+Alguns exemplos dos slides têm erros que você pode acabar copiando:
+
+No slide do <video>, há vírgulas entre os atributos, e em HTML não vão vírgulas.
+No slide do title, o <label for="name_id"> não bate com o id="nome_id", e o for tem que ser idêntico ao id.
+Nos slides de <select> e <datalist>, falta fechar </select> e </datalist>.
+No slide do reset, o texto diz que o value controla o "nome" do botão, mas ele controla o texto exibido.
