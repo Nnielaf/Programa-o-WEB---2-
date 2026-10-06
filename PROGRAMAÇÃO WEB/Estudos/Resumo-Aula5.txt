@@ -1,0 +1,137 @@
+1. Atributos id e class
+id: identifica um elemento de forma exclusiva, então não pode repetir na página. O valor começa com letra ou sublinhado, nunca com número.
+class: agrupa vários elementos que precisam de um tratamento diferente dos demais. Vários elementos podem compartilhar a mesma class.
+Um elemento pode ter mais de uma class, separadas por espaço (class="importante entrada"), e os efeitos de todas valem.
+No CSS, p#pullquote seleciona pelo id e .importante seleciona pela class.
+2. Elementos em bloco e inline
+Bloco: sempre começa em uma nova linha. Exemplos: <h1>, <p>, <ul>, <li>.
+Inline: continua na mesma linha dos vizinhos. Exemplos: <a>, <b>, <em>, <img>.
+3. Agrupamento
+<div>: agrupa elementos em um bloco, como o cabeçalho do site ou os comentários dos visitantes. Com id ou class, dá para estilizar o bloco inteiro.
+<span>: é o equivalente inline do <div>. Serve para estilizar um trecho de texto ou vários elementos inline com CSS.
+<nav>: seção com links de navegação importantes. Nem todo link precisa estar nele, e a página pode ter vários <nav>. Leitores de tela usam o elemento para decidir se pulam o conteúdo.
+4. CSS: como incluir no HTML
+Inline: usa o atributo style no elemento. É questionável, porque dificulta a manutenção ao alterar cada elemento individualmente.
+Interno: usa <style> dentro do <head>. Só vale para aquela página e não é reaproveitável.
+Externo: o CSS fica em um arquivo separado, ligado por <link href="css/style.css" rel="stylesheet"> dentro do <head>.
+href: caminho do arquivo.
+rel: relação entre os documentos.
+type: tipo de mídia (opcional).
+Uma página pode ter vários <link>, por exemplo um CSS para fontes e cores e outro para o layout.
+Vantagens do externo: serve a várias páginas, facilita a manutenção, reaproveita código e deixa o HTML mais limpo.
+CSS na própria página é aceitável para páginas únicas, regras extras e testes, mas a melhor prática é separar.
+5. Modelo de caixa (box model)
+Cada elemento HTML é tratado como uma caixa invisível. O CSS controla borda, tamanho, fundo e texto dela.
+padding: espaço entre o conteúdo e a borda. Fica dentro do elemento e aumenta sua área.
+border: linha entre o padding e o margin, com border-width, border-color e border-style.
+margin: espaço externo entre a borda e os vizinhos. Pode ser negativa.
+Margens verticais (top/bottom) colapsam e vale só a maior (20px + 25px = 25px).
+Margens horizontais (left/right) sempre somam (15px + 15px = 30px).
+Padding nunca colapsa e sempre soma.
+Exemplo: um div de 150px com padding de 20px e borda de 5px fica maior que 150px na tela.
+Propriedades de tamanho: width, height, min-width, min-height, max-width, max-height.
+6. box-sizing
+Valor	O que entra no width	Efeito
+content-box (padrão)	só o conteúdo	padding e borda aumentam o tamanho final
+border-box	conteúdo + padding + borda	a largura fica fixa e o conteúdo se ajusta por dentro
+7. Seletores e regras
+Uma regra tem um seletor e uma declaração: seletor { propriedade: valor; }.
+A declaração fica entre chaves. Propriedade e valor são separados por dois-pontos, e várias declarações são separadas por ponto e vírgula.
+Vários seletores na mesma regra se separam por vírgula (h1, h2, h3 {...}).
+Seletores diferenciam maiúsculas de minúsculas.
+Tipos:
+Global: *
+Tipo: h1
+Class: .note ou p.note
+ID: #introducao
+8. Cor
+As cores da tela são misturas de vermelho, verde e azul por pixel.
+Formas de especificar a cor:
+RGB: rgb(100,100,90), valores de 0 a 255.
+Hexadecimal: 
+#ee3e80.
+Nome: 147 nomes predefinidos, como DarkCyan.
+HSL e HSLA: também existem no CSS3.
+color: cor do texto.
+background-color: cor de fundo da caixa.
+É importante ter contraste suficiente entre texto e fundo, senão ninguém consegue ler.
+9. Opacidade
+opacity: afeta o elemento e todos os seus filhos.
+rgba(r,g,b,alfa): o alfa vai de 0,0 a 1,0 (0,5 = 50%) e afeta só o elemento em que é aplicado, não os filhos.
+10. Background
+background-image: url("..."): imagem de fundo.
+background-repeat:
+repeat (padrão): repete na horizontal e na vertical.
+repeat-x e repeat-y: repete só em um eixo.
+no-repeat: mostra uma vez.
+space: repete sem cortar e distribui os espaços entre as imagens.
+round: comprime ou estica as imagens para preencher sem lacunas.
+background-position:
+Palavras-chave como left top e center center. Com uma palavra só, a outra vira center.
+x% y%: o canto superior esquerdo é 0% 0% (o padrão).
+xpos ypos: em pixels ou outra unidade.
+background-attachment: scroll ou fixed.
+11. Texto: famílias de fonte
+Fonte genérica: serif, sans-serif, monospace, cursive, fantasy.
+Serif (Times New Roman, Cambria): tem detalhes nas pontas das letras e é tradicional para textos longos impressos.
+Sans-serif (Arial, Verdana, Helvetica): tem pontas retas e é mais clara em texto pequeno na tela.
+Monospace (Courier New, Lucida Console): todas as letras têm a mesma largura.
+font-family: lista de fontes separadas por vírgula, chamada de pilha de fontes. Se a primeira não estiver instalada, o navegador tenta a seguinte.
+Nomes com mais de uma palavra vão entre aspas ("Courier New").
+Recomenda-se no máximo três fontes por página.
+12. Tamanho da fonte (font-size)
+Absoluto (px): preciso, mas ruim para acessibilidade.
+Relativo: permite que o usuário redimensione o texto.
+O padrão do navegador é 1em = 12pt = 16px = 100%.
+Unidade	Relativa a	Exemplo
+px	tamanho fixo	width: 300px
+%	elemento pai	width: 50%
+em	fonte do elemento (no font-size, a do pai)	padding: 2em
+rem	fonte do <html> (raiz)	font-size: 1.5rem
+vw / vh	largura / altura da janela	width: 80vw
+vmin / vmax	menor / maior dimensão da janela	width: 50vmin
+Cuidado: em e % se acumulam entre pai e filho. Exemplo: 75% de 12px = 9px.
+Viewport é a área visível da página dentro da janela do navegador.
+13. Outras fontes
+@font-face: usa uma fonte que não está no computador do usuário, apontando o arquivo com src: url(...).
+Formatos: woff2 (preferido), woff, eot.
+A licença da fonte precisa permitir esse uso. Alguns sites com fontes abertas: Font Squirrel, Fontex, Open Font Library.
+Google Fonts: em vez de @font-face, você liga um <link> ao CSS deles e usa o nome no font-family.
+14. Outras propriedades de texto
+font-weight: normal (400), bold (700), bolder, lighter e valores de 100 a 900.
+font-style: normal, italic (usa a variante cursiva da fonte) e oblique (só inclina a normal).
+text-transform: uppercase, lowercase, capitalize.
+text-decoration: none, underline, overline, line-through.
+Subpropriedades: text-decoration-line, -color e -style (solid, wavy, dotted, dashed, double).
+line-height: espaço vertical entre as linhas.
+text-align: left, right, center, justify (a última linha não é justificada).
+text-indent: recuo da primeira linha, em px ou em. Aceita valor negativo.
+15. Pseudo-elementos
+Sintaxe: seletor::pseudo-elemento { propriedade: valor; }.
+::first-letter: estiliza a primeira letra.
+::first-line: estiliza a primeira linha.
+::before e ::after: inserem algo antes ou depois do texto.
+A propriedade content só existe com pseudo-elementos.
+16. Pseudo-classes de links e interação
+:link: link ainda não visitado.
+:visited: link já visitado.
+:hover: cursor sobre o elemento. Não funciona em telas de toque.
+:active: durante o clique, com o botão pressionado.
+:focus: elemento selecionado para interação, como um link ou campo de formulário.
+Podem ser combinadas com classes (input.submit:hover, input.text:focus).
+17. Variáveis CSS e :root
+:root é o elemento raiz (<html>).
+Variáveis declaradas nele são globais: --cor-principal: #ff6600; e depois var(--cor-principal).
+Se a variável for declarada fora do :root, vale só naquele escopo.
+
+Erros e pontos de atenção nos slides, para você não copiar:
+
+Aspas curvas: nos slides de <nav> (href=“index.html") e de seletores (id=“meu-id") há aspas curvas misturadas. Em HTML só valem aspas retas (").
+style.css vs styles.css: no slide do CSS externo, o arquivo se chama style.css, mas o <link> aponta para css/styles.css. O nome precisa ser idêntico.
+Slide da propriedade color: o exemplo está escrito DarkCya, e o certo é DarkCyan. O slide também diz "4 maneiras", mas lista só 3 (RGB, hexadecimal e nomes). A quarta, HSL/HSLA, só aparece no resumo.
+Slide de propriedades de texto: lista font-color, text-color e text-ident, e nenhuma dessas existe. O certo é color e text-indent (o slide de exemplo também escreve "Identação", mas o termo é "indentação").
+background-attachment: o slide descreve scroll e fixed de forma confusa, quase invertida.
+scroll (padrão): a imagem acompanha o elemento e rola junto com a página.
+fixed: a imagem fica parada em relação à janela, e o conteúdo rola por cima dela.
+background-position: o slide diz que background-attachment: fixed é "necessário". Não é, ele só aparece no exemplo do W3Schools.
+Pseudo-classes: o slide de :hover, :active e :focus e o resumo final chamam essas coisas de "pseudo-elementos". Na verdade são pseudo-classes (os pseudo-elementos usam ::). O slide de links já usa o termo certo.
