@@ -1,124 +1,76 @@
-1. Tabelas: estrutura básica
+1. Comentários
 
-<table>: cria a tabela, que é construída linha a linha
-<tr>: cada linha
-<td>: cada célula, e toda célula precisa de abertura e fechamento
-Célula vazia também precisa de <td> ou <th>, senão a tabela não renderiza direito
+Sintaxe: <!-- comentário -->, em uma ou várias linhas
+Não aparece no navegador do usuário
 
-2. Cabeçalhos
+2. Iframe
 
-<th>: título de coluna ou de linha (ajuda leitores de tela, indexação e o controle de aparência com CSS)
-scope="col" ou scope="row": só para acessibilidade, não altera conteúdo nem formatação e não é obrigatório
+<iframe> (inline frame): uma "janelinha" que mostra outra página dentro da sua
+Uso comum: incorporar mapa do Google (pelo Maps: copiar HTML e colar, já vem o iframe pronto)
+Atributos: src (URL da página), width e height (em pixels)
+O conteúdo pode ser de qualquer servidor, desde que o dono libere o acesso
 
-3. Mesclar células
+3. Listas
 
-colspan="n": a célula ocupa n colunas
-rowspan="n": a célula ocupa n linhas
-Ambos valem em <td> e <th>
+Ordenada <ol>: itens numerados
+Atributo type: 1 (números), a/A (letras minúsculas/maiúsculas), i/I (romanos minúsculos/maiúsculos)
+Não ordenada <ul>: itens com marcador
+type: disc (padrão), square, circle
+Itens <li>: usados em <ol> e <ul>, com abertura e fechamento
+De definição <dl>: pares de <dt> (termo) e <dd> (definição)
+Pode ter dois termos para a mesma definição, ou duas definições para o mesmo termo
+Aninhada: uma lista dentro de um <li>, e o </li> só fecha depois da lista interna
+O navegador recua a lista interna e costuma mudar o marcador
 
-4. Legenda e seções
+4. Links com <a>
 
-<caption>: legenda da tabela, logo na primeira linha depois de <table>
-<thead>, <tbody>, <tfoot>: cabeçalho, corpo e rodapé (todos opcionais)
-border="1": borda simples usada nos exemplos
+<a href="URL">texto clicável</a>
+URL absoluta: endereço completo (http://www.imdb.com), usada para outros sites
+URL relativa: caminho em relação à página atual, usada no mesmo site
+Mesma pasta: só o nome do arquivo (reviews.html)
+Pasta filha: movies/cinema/listings.html
+Subir um nível: ../index.html
+Subir dois níveis: ../../index.html
+A partir da raiz: /index.html (o / é o diretório raiz)
+A página principal do site (e de cada pasta) se chama index.html
+Para links dentro do próprio site, prefira URL relativa
+E-mail: href="mailto:jon@example.org" abre o programa de e-mail com a mensagem endereçada
+target: _self (mesma aba, padrão), _blank (nova aba ou janela), _parent (frame pai)
+Âncora na mesma página: dê um id ao destino (<h2 id="arc_shot">) e use href="#arc_shot" (o # seguido do id)
+Para outra página: pagina.html#id
 
-5. Multimídia
+5. Dica do VS Code: Emmet
 
-Multimídia é qualquer recurso que se vê ou ouve
-Formatos de vídeo: MP4, WebM, Ogg
-Formatos de áudio: MP3, WAV, Ogg
+Plugin que gera HTML e CSS a partir de abreviações
+html:5 + TAB gera a estrutura completa do HTML5
+ul>li*5 + TAB gera uma lista com 5 itens (> aninha, *5 repete)
 
-6. Imagens
+6. Elementos de bloco e inline
 
-<img>: elemento vazio, sem tag de fechamento
-Atributos: src (URL), alt (texto alternativo, boa prática de acessibilidade), width e height
-Bitmap (JPG, GIF, PNG): feito de pixels, e quanto maior a resolução, maior o arquivo e mais lento carrega
-Vetor (SVG): não perde qualidade ao ampliar
+Bloco: sempre começam em nova linha (<h1>, <p>, <ul>, <li>)
+Inline: continuam na mesma linha dos vizinhos (<a>, <b>, <em>, <img>)
 
-7. Imagens responsivas
+7. Atributos id e class
 
-<picture> com vários <source> e um <img> de reserva no final
-media="(min-width: 480px)": condição de largura da tela
-srcset: lista de imagens com suas larguras (1280w, 960w, 480w), e o navegador escolhe a melhor
-sizes="33vw": a imagem deve ocupar 33% da largura da tela
-DPR (relação entre pixels CSS e físicos): 1 (1 pixel por px CSS), 2 (a maioria dos celulares, 4 pixels reais), 3 (celulares top, 9 pixels reais)
+id: identifica um elemento de forma única na página
+Pode ser usado em qualquer elemento, mas não pode repetir na mesma página
+Deve começar com letra ou sublinhado (não número)
+No CSS: p#pullquote { ... }
+class: marca vários elementos com o mesmo grupo
+Vários elementos podem ter o mesmo valor
+Um elemento pode ter mais de uma classe (class="importante entrada")
+No CSS: .importante { ... }
 
-8. Áudio e vídeo
+8. Agrupamento com <div> e <span>
 
-<audio src="..." controls autoplay>: formatos MP3, OGG e WAV
-<video src="..." poster="..." width height controls autoplay>: o poster é a imagem exibida antes de o vídeo carregar ou tocar
-
-9. Formulários: conceito e funcionamento
-
-Formulário coleta informações do visitante, dentro de <form>
-O envio manda pares nome/valor ao servidor (PHP, C#, VB.net, Java), que processa, pode gravar em banco de dados e devolve uma nova página
-action: URL para onde os dados vão
-method: get coloca os dados na URL, post coloca no corpo da requisição
-
-10. Campos de texto
-
-<input type="text">: linha única, com size e maxlength
-<input type="password">: mascara os caracteres
-<textarea cols rows>: texto de várias linhas
-
-11. Campos de escolha
-
-type="radio": uma opção entre várias, com o mesmo name para agrupar
-type="checkbox": uma ou mais opções
-<select> com <option>: lista suspensa (drop-down)
-<optgroup label="...">: agrupa as opções
-checked="checked": já vem marcado
-
-12. Autocomplete
-
-<datalist id="..."> com <option>, ligado ao input pelo atributo list
-
-13. Botões e envio
-
-type="submit": envia (o value é o texto do botão)
-type="reset": limpa os campos do form (o value também controla o texto)
-Botão de imagem, parecido com o de envio
-type="file": upload de arquivos
-type="search": caixa de pesquisa
-
-14. Dicas dentro do campo
-
-placeholder: dica que some quando se começa a digitar
-title: dica que aparece ao passar o mouse
-
-15. Labels e acessibilidade
-
-<label> em cada campo, de duas formas: envolvendo o campo, ou separado com for="id" ligado ao id do campo
-Em checkbox e radio, clicar no rótulo também seleciona
-Posição do rótulo: acima ou à esquerda de texto, select e file; à direita de checkbox e radio
-
-16. Agrupamento
-
-<fieldset>: agrupa campos relacionados, normalmente com uma borda
-<legend>: título do grupo, logo depois da abertura do fieldset
-
-17. Validação e novos inputs do HTML5
-
-Navegadores antigos tratam inputs novos como texto simples
-type="date", email (confere o formato com @), url
-Outros: color, hidden, month, range, tel, time, week, datetime-local
-
-18. Atributos de input
-
-Atributo	O que faz
-required	Campo obrigatório
-disabled	Campo desativado
-readonly	Somente leitura
-min / max	Valor mínimo e máximo
-maxlength	Máximo de caracteres
-size	Largura em caracteres
-pattern	Expressão regular de validação
-step	Intervalos válidos (usado no range)
-value	Valor padrão
+<div>: contêiner de bloco, começa em nova linha e agrupa elementos (cabeçalho, comentários, seções)
+<span>: equivalente inline do div, para um trecho de texto sem outro elemento adequado
+Com id ou class, o CSS controla o espaço ocupado e a aparência do conteúdo
+Comentário <!-- fim do header --> ajuda a marcar onde o <div> termina
 
 Alguns exemplos dos slides têm erros que você pode acabar copiando:
 
-No slide do <video>, há vírgulas entre os atributos, e em HTML não vão vírgulas.
-No slide do title, o <label for="name_id"> não bate com o id="nome_id", e o for tem que ser idêntico ao id.
-Nos slides de <select> e <datalist>, falta fechar </select> e </datalist>.
-No slide do reset, o texto diz que o value controla o "nome" do botão, mas ele controla o texto exibido.
+Os slides 20, 25 e 28 têm aspas curvas (href=“...”), e o HTML só aceita aspas retas (").
+No slide 3, o comentário aparece como <!–-, com um traço que não é o hífen normal, e o certo é <!--.
+O título do slide 30 diz "Link para páginas no mesmo site", mas o conteúdo é sobre o atributo target.
+O atributo type em <ol> e <ul> aparece na aula, mas hoje o estilo do marcador é feito pelo CSS (list-style-type). Para a prova, siga a aula.
