@@ -26,13 +26,3 @@ h1{
     top: 15vh;
     left: 95vh;
 }
-
-section{
-    position: relative;
-    justify-content: left;
-    margin: 5px;
-}
-
-section h2 {
-    position: relative;
-}
