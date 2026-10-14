@@ -8,7 +8,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGyGxtxnwOiyQWo4koDLghegg_Xr9W-TEDWvYMlNkN7jtBrp7ZljpsBNw&s=10");
+    
 }
 
 main{
@@ -53,9 +53,9 @@ form{
     display: flex;
     flex-direction: column;
     justify-items: center;
-    text-align: left;  
+    text-align: left;
+  
 }
-
 p{
     text-align: center;
 }
@@ -63,9 +63,10 @@ p{
 .botaoGoogle{
     text-align: center;
     border: 2px solid rgba(145, 138, 138, 0.082);
-    box-shadow: 5px 5px 5px 5px rgba(235, 199, 199, 0.466);
+    box-shadow: 5px 5px 5px 5px rgba(175, 147, 147, 0.466);
     text-decoration: none;
     color: black;
+    background-color: white;
 }
 
 .botaoGoogle:hover{
