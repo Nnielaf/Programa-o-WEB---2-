@@ -85,6 +85,11 @@ p{
     text-decoration-color: green;
 }
 
+#Esquecer-email:hover{
+    font-size: 17px;
+    color: rgb(76, 118, 207);
+}
+
 .botaoGoogle{
     text-align: center;
     border: 1px solid rgba(83, 83, 83, 0.082);
