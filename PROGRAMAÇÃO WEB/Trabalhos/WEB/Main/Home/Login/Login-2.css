@@ -64,14 +64,15 @@ form {
    
 }
 
-form input:nth-child(1) {
+form input:nth-child(1){
+    display: inline;
     margin: 5px;
     padding: 5px;
 }
 
-form input:nth-child(1):hover{
+form input:nth-child(1):hover{ /*Esquecer o E-mail */
     font-size: 15px;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-in;
 }
 
 
@@ -133,10 +134,12 @@ section h2:nth-child(1) {
     color: rgb(90, 89, 89);
     text-align: center;
     text-decoration: none;
+    align-self: center;
+
 }
 
 #Esquecer-email:hover {
     color: rgb(76, 118, 207);
     font-size: 17px;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-in;
 }
