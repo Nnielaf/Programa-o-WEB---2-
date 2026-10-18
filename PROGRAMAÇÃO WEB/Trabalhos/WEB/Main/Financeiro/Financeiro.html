@@ -1,11 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Financeiro · O Boticário</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css.css">
 </head>
 <body>
-    
+
+<!-- Ícones (sprite) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><path d="M16 4.5a3.5 3.5 0 010 7M18 14.5c2 .8 3.5 2.8 3.5 5.5"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h11L21 7H6"/></symbol>
+  <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9c-.5-1-1.5-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1 0-2-.5-2.5-1.5M12 6v1.5M12 16.5V18"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M9 12h6M9 16h6"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+</svg>
+
+<div class="app">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <a class="brand" href="#" aria-label="O Boticário">
+      <svg viewBox="0 0 28 36" aria-hidden="true"><path d="M10 1h8v5h-1.5l3.5 6v22a2 2 0 01-2 2H10a2 2 0 01-2-2V12l3.5-6H10z"/></svg>
+      <span>oBOTICÁRIO</span>
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><span>Clientes</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg><span>Vendas</span></a>
+      <a href="#" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-dollar"/></svg><span>Financeiro</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg><span>Inventário</span></a>
+    </nav>
+
+    <svg class="sidebar-leaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15zM5 19l8-8"/></svg>
+
+    <div class="sidebar-footer">
+      <hr>
+      <p>Beleza é<br>se sentir bem.</p>
+      <small>oBOTICÁRIO</small>
+    </div>
+  </aside>
+
+  <!-- ===== Conteúdo ===== -->
+  <div class="main">
+
+    <header class="topbar">
+      <label class="search">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <span class="sr-only">Buscar no sistema</span>
+        <input type="search" placeholder="Buscar no sistema...">
+      </label>
+      <span class="topbar-spacer"></span>
+      <button class="icon-btn" type="button" aria-label="Notificações">
+        <svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg>
+      </button>
+      <div class="user">
+        <span class="avatar"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg></span>
+        <span>Olá, Administrador</span>
+        <svg class="icon" aria-hidden="true" style="font-size:16px"><use href="#i-chevron"/></svg>
+      </div>
+    </header>
+
+    <main style="display:contents">
+
+      <div class="page-header">
+        <div>
+          <h1>Financeiro</h1>
+          <p>Acompanhe o faturamento, despesas e o fluxo financeiro da loja.</p>
+        </div>
+        <label class="select">
+          <span class="sr-only">Período</span>
+          <select>
+            <option>Outubro de 2024</option>
+            <option>Setembro de 2024</option>
+            <option>Agosto de 2024</option>
+          </select>
+          <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
+        </label>
+      </div>
+
+      <!-- Resumo -->
+      <section class="stats" aria-label="Resumo financeiro">
+        <div class="stat">
+          <div class="stat-label"><svg class="icon" aria-hidden="true"><use href="#i-dollar"/></svg>Receita total</div>
+          <strong>R$ 12.850,00</strong>
+          <div class="delta"><svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>15%</div>
+        </div>
+        <div class="stat stat--expense">
+          <div class="stat-label"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Despesas total</div>
+          <strong>R$ 3.420,00</strong>
+          <div class="delta delta--down"><svg class="icon" aria-hidden="true"><use href="#i-down"/></svg>8%</div>
+        </div>
+        <div class="stat">
+          <div class="stat-label"><svg class="icon" aria-hidden="true"><use href="#i-dollar"/></svg>Lucro líquido</div>
+          <strong>R$ 9.430,00</strong>
+          <div class="delta"><svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>18%</div>
+        </div>
+      </section>
+
+      <!-- Gráficos -->
+      <div class="charts">
+        <section class="panel" aria-labelledby="t-faturamento">
+          <h2 id="t-faturamento">Faturamento dos últimos 7 dias</h2>
+          <div class="chart">
+            <div class="chart-y" aria-hidden="true">
+              <span>R$ 4.000</span><span>R$ 3.000</span><span>R$ 2.000</span><span>R$ 1.000</span><span>R$ 0</span>
+            </div>
+            <div class="chart-bars" role="img" aria-label="Faturamento diário de 10/10 a 16/10: R$ 1.700, R$ 2.600, R$ 2.000, R$ 3.100, R$ 2.300, R$ 3.300 e R$ 3.800">
+              <div class="bar" style="--v:1700"><i></i>10/10</div>
+              <div class="bar" style="--v:2600"><i></i>11/10</div>
+              <div class="bar" style="--v:2000"><i></i>12/10</div>
+              <div class="bar" style="--v:3100"><i></i>13/10</div>
+              <div class="bar" style="--v:2300"><i></i>14/10</div>
+              <div class="bar" style="--v:3300"><i></i>15/10</div>
+              <div class="bar" style="--v:3800"><i></i>16/10</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="t-despesas">
+          <h2 id="t-despesas">Despesas por categoria</h2>
+          <div class="donut-row">
+            <div class="donut" role="img" aria-label="Fornecedores 45%, Marketing 20%, Salários 15%, Outros 20%"></div>
+            <ul class="legend">
+              <li style="--c:#1F5C46">Fornecedores <span>45%</span></li>
+              <li style="--c:#3E9B72">Marketing <span>20%</span></li>
+              <li style="--c:#8CC9A8">Salários <span>15%</span></li>
+              <li style="--c:#C9E4D3">Outros <span>20%</span></li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- Movimentações -->
+      <section class="panel" aria-labelledby="t-mov">
+        <h2 id="t-mov">Movimentações recentes</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col" class="col-date">Data</th>
+                <th scope="col">Descrição</th>
+                <th scope="col" class="col-category">Categoria</th>
+                <th scope="col" class="col-value">Valor</th>
+                <th scope="col" class="col-type">Tipo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-date">16/10/2024</td><td>Venda de produtos</td><td class="col-category">Vendas</td>
+                <td class="col-value income">+R$ 249,80</td><td class="col-type income">Receita</td>
+              </tr>
+              <tr>
+                <td class="col-date">15/10/2024</td><td>Compra de produtos</td><td class="col-category">Fornecedores</td>
+                <td class="col-value expense">-R$ 1.250,00</td><td class="col-type expense">Despesa</td>
+              </tr>
+              <tr>
+                <td class="col-date">14/10/2024</td><td>Energia elétrica</td><td class="col-category">Contas fixas</td>
+                <td class="col-value expense">-R$ 320,00</td><td class="col-type expense">Despesa</td>
+              </tr>
+              <tr>
+                <td class="col-date">13/10/2024</td><td>Venda de produtos</td><td class="col-category">Vendas</td>
+                <td class="col-value income">+R$ 189,90</td><td class="col-type income">Receita</td>
+              </tr>
+              <tr>
+                <td class="col-date">12/10/2024</td><td>Marketing Digital</td><td class="col-category">Marketing</td>
+                <td class="col-value expense">-R$ 150,00</td><td class="col-type expense">Despesa</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+
 </body>
 </html>
