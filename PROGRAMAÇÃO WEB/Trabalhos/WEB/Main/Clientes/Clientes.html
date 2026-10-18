@@ -1,11 +1,219 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clientes · O Boticário</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css.css">
 </head>
 <body>
-    
+
+<!-- Ícones (sprite) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><path d="M16 4.5a3.5 3.5 0 010 7M18 14.5c2 .8 3.5 2.8 3.5 5.5"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h11L21 7H6"/></symbol>
+  <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9c-.5-1-1.5-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1 0-2-.5-2.5-1.5M12 6v1.5M12 16.5V18"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></symbol>
+</svg>
+
+<div class="app">
+
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <a class="brand" href="#" aria-label="O Boticário">
+      <svg viewBox="0 0 28 36" aria-hidden="true"><path d="M10 1h8v5h-1.5l3.5 6v22a2 2 0 01-2 2H10a2 2 0 01-2-2V12l3.5-6H10z"/></svg>
+      <span>oBOTICÁRIO</span>
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a>
+      <a href="#" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><span>Clientes</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg><span>Vendas</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-dollar"/></svg><span>Financeiro</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg><span>Inventário</span></a>
+    </nav>
+
+    <svg class="sidebar-leaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15zM5 19l8-8"/></svg>
+
+    <div class="sidebar-footer">
+      <hr>
+      <p>Beleza é<br>se sentir bem.</p>
+      <small>oBOTICÁRIO</small>
+    </div>
+  </aside>
+
+  <!-- ===== Conteúdo ===== -->
+  <div class="main">
+
+    <header class="topbar">
+      <label class="search">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <span class="sr-only">Buscar no sistema</span>
+        <input type="search" placeholder="Buscar no sistema...">
+      </label>
+      <span class="topbar-spacer"></span>
+      <button class="icon-btn" type="button" aria-label="Notificações">
+        <svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg>
+      </button>
+      <div class="user">
+        <span class="avatar"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg></span>
+        <span>Olá, Administrador</span>
+        <svg class="icon" aria-hidden="true" style="font-size:16px"><use href="#i-chevron"/></svg>
+      </div>
+    </header>
+
+    <main style="display:contents">
+
+      <div class="page-header">
+        <div>
+          <h1>Clientes</h1>
+          <p>Gerencie o cadastro e consulte os clientes da sua loja.</p>
+        </div>
+        <button class="btn" type="button">
+          <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>
+          Cadastrar cliente
+        </button>
+      </div>
+
+      <div class="content">
+
+        <!-- Lista -->
+        <section class="panel" aria-label="Lista de clientes">
+          <div class="filters">
+            <label class="search">
+              <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+              <span class="sr-only">Buscar cliente</span>
+              <input type="search" placeholder="Buscar por nome, CPF, telefone...">
+            </label>
+            <label class="select select--type">
+              <span class="sr-only">Filtrar por tipo</span>
+              <select>
+                <option>Todos os tipos</option>
+                <option>Pessoa física</option>
+                <option>Pessoa jurídica</option>
+              </select>
+              <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
+            </label>
+            <label class="select select--sort">
+              <span class="sr-only">Ordenar por</span>
+              <select>
+                <option>Ordenar por: Nome (A-Z)</option>
+                <option>Ordenar por: Nome (Z-A)</option>
+                <option>Ordenar por: Mais recentes</option>
+              </select>
+              <svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg>
+            </label>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" class="col-name">Nome</th>
+                  <th scope="col" class="col-cpf">CPF</th>
+                  <th scope="col" class="col-phone">Telefone</th>
+                  <th scope="col">Tipo</th>
+                  <th scope="col" class="col-actions">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="is-selected">
+                  <td class="col-name">Mariana Silva</td><td class="col-cpf">123.456.789-01</td><td class="col-phone">(11) 98765-4321</td><td>Pessoa física</td>
+                  <td class="col-actions"><div class="row-actions">
+                    <button type="button" aria-label="Editar Mariana Silva"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button>
+                    <button type="button" class="danger" aria-label="Excluir Mariana Silva"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg></button>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td class="col-name">João Santos</td><td class="col-cpf">987.654.321-00</td><td class="col-phone">(11) 91234-5678</td><td>Pessoa física</td>
+                  <td class="col-actions"><div class="row-actions">
+                    <button type="button" aria-label="Editar João Santos"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button>
+                    <button type="button" class="danger" aria-label="Excluir João Santos"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg></button>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td class="col-name">Ana Costa</td><td class="col-cpf">456.123.789-00</td><td class="col-phone">(11) 99876-5432</td><td>Pessoa física</td>
+                  <td class="col-actions"><div class="row-actions">
+                    <button type="button" aria-label="Editar Ana Costa"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button>
+                    <button type="button" class="danger" aria-label="Excluir Ana Costa"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg></button>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td class="col-name">Lucas Oliveira</td><td class="col-cpf">321.654.987-00</td><td class="col-phone">(11) 93456-7890</td><td>Pessoa física</td>
+                  <td class="col-actions"><div class="row-actions">
+                    <button type="button" aria-label="Editar Lucas Oliveira"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button>
+                    <button type="button" class="danger" aria-label="Excluir Lucas Oliveira"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg></button>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td class="col-name">Fernanda Lima</td><td class="col-cpf">789.456.123-00</td><td class="col-phone">(11) 97654-3210</td><td>Pessoa física</td>
+                  <td class="col-actions"><div class="row-actions">
+                    <button type="button" aria-label="Editar Fernanda Lima"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button>
+                    <button type="button" class="danger" aria-label="Excluir Fernanda Lima"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg></button>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td class="col-name">Carlos Almeida</td><td class="col-cpf">654.987.321-00</td><td class="col-phone">(11) 95543-2109</td><td>Pessoa física</td>
+                  <td class="col-actions"><div class="row-actions">
+                    <button type="button" aria-label="Editar Carlos Almeida"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button>
+                    <button type="button" class="danger" aria-label="Excluir Carlos Almeida"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg></button>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td class="col-name">Beatriz Souza</td><td class="col-cpf">258.741.963-00</td><td class="col-phone">(11) 98231-5467</td><td>Pessoa jurídica</td>
+                  <td class="col-actions"><div class="row-actions">
+                    <button type="button" aria-label="Editar Beatriz Souza"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button>
+                    <button type="button" class="danger" aria-label="Excluir Beatriz Souza"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg></button>
+                  </div></td>
+                </tr>
+                <tr>
+                  <td class="col-name">Rafael Pereira</td><td class="col-cpf">963.852.741-00</td><td class="col-phone">(11) 97021-3345</td><td>Pessoa física</td>
+                  <td class="col-actions"><div class="row-actions">
+                    <button type="button" aria-label="Editar Rafael Pereira"><svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button>
+                    <button type="button" class="danger" aria-label="Excluir Rafael Pereira"><svg class="icon" aria-hidden="true"><use href="#i-trash"/></svg></button>
+                  </div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Detalhes -->
+        <aside class="details" aria-labelledby="t-detalhes">
+          <h2 id="t-detalhes">Detalhes do cliente</h2>
+          <div class="details-card">
+            <div class="details-head">
+              <span class="avatar"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg></span>
+              <div>
+                <strong>Mariana Silva</strong>
+                <span>Cliente desde 16/10/2024</span>
+              </div>
+            </div>
+            <dl>
+              <div><dt>CPF</dt><dd>123.456.789-01</dd></div>
+              <div><dt>Telefone</dt><dd>(11) 98765-4321</dd></div>
+              <div><dt>E-mail</dt><dd>mari@exemplo.com</dd></div>
+              <div><dt>Tipo</dt><dd>Pessoa física</dd></div>
+            </dl>
+          </div>
+          <button class="btn btn--block" type="button">Editar cadastro</button>
+        </aside>
+
+      </div>
+    </main>
+  </div>
+</div>
+
 </body>
 </html>
