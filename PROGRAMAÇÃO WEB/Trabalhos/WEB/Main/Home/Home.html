@@ -1,36 +1,188 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="Style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home · O Boticário</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Porjeto.css">
 </head>
 <body>
 
-    <aside>
-        
-        <h1><a href="#">oBoticario</a></h1>
+<!-- Ícones (sprite) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><path d="M16 4.5a3.5 3.5 0 010 7M18 14.5c2 .8 3.5 2.8 3.5 5.5"/></symbol>
+  <symbol id="i-cart" viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.5 12h11L21 7H6"/></symbol>
+  <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9c-.5-1-1.5-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1 0-2-.5-2.5-1.5M12 6v1.5M12 16.5V18"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M3 7l9 5 9-5M12 12v10"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
 
-        <nav>
-            <ul>
-                <li ><a href="#"> Home </a></li>
-                <li ><a href="#"> Clientes </a></li>
-                <li ><a href="#"> Vendas </a></li>
-                <li ><a href="#"> Financeiro </a></li>
-                <li ><a href="#"> Inventário </a></li>
-            </ul>
-        </nav>
+<div class="app">
 
-        <footer>
-            
-            <div class="linha"></div>
+  <!-- ===== Sidebar ===== -->
+  <aside class="sidebar">
+    <a class="brand" href="#" aria-label="O Boticário">
+      <svg viewBox="0 0 28 36" aria-hidden="true"><path d="M10 1h8v5h-1.5l3.5 6v22a2 2 0 01-2 2H10a2 2 0 01-2-2V12l3.5-6H10z"/></svg>
+      <span>oBOTICÁRIO</span>
+    </a>
 
-            <p>
-                <i>Beleza é se <br> sentir bem</i>
-            </p>
-        </footer>
-    </aside>
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg><span>Home</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><span>Clientes</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg><span>Vendas</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-dollar"/></svg><span>Financeiro</span></a>
+      <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg><span>Inventário</span></a>
+    </nav>
+
+    <svg class="sidebar-leaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15zM5 19l8-8"/></svg>
+
+    <div class="sidebar-footer">
+      <hr>
+      <p>Beleza é<br>se sentir bem.</p>
+      <small>oBOTICÁRIO</small>
+    </div>
+  </aside>
+
+  <!-- ===== Conteúdo ===== -->
+  <div class="main">
+
+    <header class="topbar">
+      <label class="search">
+        <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+        <span class="sr-only">Buscar no sistema</span>
+        <input type="search" placeholder="Buscar no sistema...">
+      </label>
+      <span class="topbar-spacer"></span>
+      <button class="icon-btn" type="button" aria-label="Notificações">
+        <svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg>
+      </button>
+      <div class="user">
+        <span class="avatar"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg></span>
+        <span>Olá, Administrador</span>
+        <svg class="icon" aria-hidden="true" style="font-size:16px"><use href="#i-chevron"/></svg>
+      </div>
+    </header>
+
+    <main style="display:contents">
+
+      <div class="page-header">
+        <div>
+          <h1>Bem-vindo(a)!</h1>
+          <p>Aqui você acompanha o resumo do seu negócio.</p>
+        </div>
+        <time datetime="2024-10-16">Quarta-feira, 16 de Outubro de 2024</time>
+      </div>
+
+      <!-- Banner -->
+      <section class="hero" aria-label="Destaque">
+        <div class="hero-text">
+          <h2>O Boticário<br>é beleza que transforma</h2>
+          <p>Mais do que produtos, entregamos<br>autocuidado, autoestima e bem-estar.</p>
+          <a class="btn-outline" href="#">
+            Conheça nossos produtos
+            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+          </a>
+        </div>
+        <div class="products" aria-hidden="true">
+          <span class="prod prod--bottle"></span>
+          <span class="prod prod--tube"></span>
+          <span class="prod prod--perfume"></span>
+        </div>
+      </section>
+
+      <!-- Resumo -->
+      <section class="stats" aria-label="Resumo do negócio">
+        <div class="stat">
+          <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>
+          <strong>125</strong>
+          <span>Clientes cadastrados</span>
+          <div class="delta"><svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>12%</div>
+        </div>
+        <div class="stat">
+          <svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg>
+          <strong>48</strong>
+          <span>Vendas no mês</span>
+          <div class="delta"><svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>8%</div>
+        </div>
+        <div class="stat">
+          <svg class="icon" aria-hidden="true"><use href="#i-dollar"/></svg>
+          <strong>R$ 12.850,00</strong>
+          <span>Faturamento do mês</span>
+          <div class="delta"><svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>15%</div>
+        </div>
+        <div class="stat">
+          <svg class="icon" aria-hidden="true"><use href="#i-box"/></svg>
+          <strong>320</strong>
+          <span>Produtos em estoque</span>
+          <div class="delta"><svg class="icon" aria-hidden="true"><use href="#i-up"/></svg>5%</div>
+        </div>
+      </section>
+
+      <div class="bottom">
+
+        <!-- Últimas vendas -->
+        <section class="panel" aria-labelledby="t-vendas">
+          <div class="panel-head">
+            <h2 id="t-vendas">Últimas vendas</h2>
+            <a class="link-more" href="#">Ver todas <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col" class="col-client">Cliente</th>
+                  <th scope="col" class="col-date">Data</th>
+                  <th scope="col">Produto(s)</th>
+                  <th scope="col" class="col-value">Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="col-client">Mariana Silva</td><td class="col-date">16/10/2024</td><td>Floratta + Hidratante</td><td class="col-value">R$ 189,90</td></tr>
+                <tr><td class="col-client">João Santos</td><td class="col-date">15/10/2024</td><td>Malbec</td><td class="col-value">R$ 159,90</td></tr>
+                <tr><td class="col-client">Ana Costa</td><td class="col-date">15/10/2024</td><td>Nativa SPA Ameixa</td><td class="col-value">R$ 129,90</td></tr>
+                <tr><td class="col-client">Lucas Oliveira</td><td class="col-date">14/10/2024</td><td>Kit Presente Cuide-se Bem</td><td class="col-value">R$ 99,90</td></tr>
+                <tr><td class="col-client">Fernanda Lima</td><td class="col-date">14/10/2024</td><td>Egeo Dolce</td><td class="col-value">R$ 139,90</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Coluna lateral -->
+        <div class="side">
+          <section class="quick" aria-labelledby="t-acoes">
+            <h2 id="t-acoes">Ações rápidas</h2>
+            <div class="quick-grid">
+              <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg>Cadastrar cliente</a>
+              <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-cart"/></svg>Registrar venda</a>
+              <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg>Atualizar estoque</a>
+              <a href="#"><svg class="icon" aria-hidden="true"><use href="#i-dollar"/></svg>Ver fluxo financeiro</a>
+            </div>
+          </section>
+
+          <section class="promo" aria-labelledby="t-promo">
+            <svg class="promo-leaf" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C5 9 11 4 20 4c0 9-5 15-15 15zM5 19l8-8"/></svg>
+            <h2 id="t-promo">Juntos por um<br>mundo mais bonito</h2>
+            <p>O Boticário e você, por um<br>futuro mais sustentável.</p>
+            <a class="btn-outline btn-outline--sm" href="#">
+              Saiba mais
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </section>
+        </div>
+
+      </div>
+    </main>
+  </div>
+</div>
 
 </body>
 </html>
