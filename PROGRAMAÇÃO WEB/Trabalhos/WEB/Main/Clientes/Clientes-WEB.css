@@ -38,10 +38,10 @@ aside {
     display: flex;
     flex-direction: column;
     position: absolute;
-    bottom: 10vh;
-    left: 40vh;
+    bottom: 20vh;
+    left: 25vh;
     width: 60%;
-    min-height: 65vh;
+    min-height: 60vh;
     padding: 20px;
     background-color:#ffffff;
     box-shadow: 5px 5px 5px 5px #cac8c8;
@@ -90,18 +90,24 @@ form {
 }
 
 .conteiner form .item {
-    flex-grow: 1;
+    flex-grow: 0;
 }
 
 #Pesquisa {
-    flex-grow: 4;
+    flex-grow: 1;
+    width: auto;
+}
+
+.conteiner form select.item{
+    width: 200px;
 }
 
 .item {
     padding: 5px;
     border-radius: 5px;
-    border: none;
-    box-shadow: 2px 1px 1px 1px #c9c9c9;
+    border: 0;
+    box-shadow: 1px 1px 1px 1px #c9c9c9;
+    margin-bottom: 35px;
 }
 
 .item:hover{
@@ -116,10 +122,17 @@ table{
 }
 
 table th, table td {
-    padding: 20px 15px; /* Espaço em cima/baixo e nas laterais */
+    padding: 8px 12px;
+    font-size: 14px; /* Espaço em cima/baixo e nas laterais */
     text-align: left;    /* Alinha o texto à esquerda */
     border-bottom: 1px solid #ddd; /* Cria uma linha divisória elegante */
+    color: rgb(92, 91, 91);
 }
+
+table thead th{
+    gap: 15px;
+}
+
 
 /* ==========================================================================
    5. ELEMENTOS DE TEXTO E TIPOGRAFIA
