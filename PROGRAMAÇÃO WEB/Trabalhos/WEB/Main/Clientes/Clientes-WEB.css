@@ -39,7 +39,7 @@ aside {
     flex-direction: column;
     position: absolute;
     bottom: 20vh;
-    left: 25vh;
+    left: 28vh;
     width: 60%;
     min-height: 60vh;
     padding: 20px;
@@ -103,11 +103,12 @@ form {
 }
 
 .item {
-    padding: 5px;
+    padding: 10px;
     border-radius: 5px;
     border: 0;
     box-shadow: 1px 1px 1px 1px #c9c9c9;
     margin-bottom: 35px;
+    color: rgb(92, 91, 91);
 }
 
 .item:hover{
@@ -125,14 +126,47 @@ table th, table td {
     padding: 8px 12px;
     font-size: 14px; /* Espaço em cima/baixo e nas laterais */
     text-align: left;    /* Alinha o texto à esquerda */
-    border-bottom: 1px solid #ddd; /* Cria uma linha divisória elegante */
+    border-bottom: 1px solid #ddd; /* Cria uma linha divisória elegante*/
     color: rgb(92, 91, 91);
 }
 
-table thead th{
-    gap: 15px;
+
+/* Remova o display: flex daqui */
+th.linha_tipos {
+    font-family: inherit; /* Mantém a fonte padrão */
+    font-weight: bold;
+    padding-right: 20px;  /* Espaço curto garantido após o texto do título */
+    text-align: left;     /* Alinha o texto à esquerda */
 }
 
+
+
+/* Define a largura de cada coluna para distribuir os títulos perfeitamente */
+table th:nth-child(1) { width: 10%; } /* Nome ganha mais espaço */
+table th:nth-child(2) { width: 10%; } /* CPF */
+table th:nth-child(3) { width: 10%; } /* Telefone */
+table th:nth-child(4) { width: 50%; } /* Tipo */
+table th:nth-child(5) { width: 10%; } /* Ações fica no final */
+
+
+.cadastroCliente button{
+    display: flex;
+    position: absolute;
+    background-color: #1F5B46;
+    padding: 11px 20px;
+    right: 20px;
+    top: 75px;
+    color: white;
+    font-size: 13.5px;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;;
+    border-radius: 5px;
+}
+
+.cadastroCliente button:hover{
+    background-color: #185540;
+    font-size: 15px;
+    transition: all 0.5s ease;
+}
 
 /* ==========================================================================
    5. ELEMENTOS DE TEXTO E TIPOGRAFIA
