@@ -13,8 +13,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #F8F6F1;
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr 1fr 1fr;
+
 }
 
 body {
@@ -157,15 +158,33 @@ table th:nth-child(5) { width: 10%; } /* Ações fica no final */
     right: 20px;
     top: 75px;
     color: white;
-    font-size: 13.5px;
-    font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;;
+     font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+    font-weight: 700; /* Deixa a fonte em negrito (Bold) */
+    font-size: 14px;
     border-radius: 5px;
 }
 
 .cadastroCliente button:hover{
-    background-color: #185540;
+    background-color: #184E37;
     font-size: 15px;
     transition: all 0.5s ease;
+}
+
+.detalhesCliente{
+    position: absolute;
+    height: 45vh;
+    right: 75px;
+    bottom: 34vh;
+    width: 20%;
+    background-color: #EFEDE4;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.informacoesCliente{
+    background-color: orange;
+    height: 20px;
+    width: 15px;
 }
 
 /* ==========================================================================
