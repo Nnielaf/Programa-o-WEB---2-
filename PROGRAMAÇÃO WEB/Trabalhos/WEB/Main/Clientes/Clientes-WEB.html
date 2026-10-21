@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Boticário - Painel</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         MENU LATERAL (ASIDE)
+         ========================================== -->
+    <aside>
+        <h1><a href="#">oBoticario</a></h1>
+        
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Clientes</a></li>
+                <li><a href="#">Vendas</a></li>
+                <li><a href="#">Financeiro</a></li>
+                <li><a href="#">Inventário</a></li>
+            </ul>
+        </nav>
+
+        <footer>
+            <div class="linha"></div>
+            <p><i>Beleza é se<br>sentir bem</i></p>
+        </footer>
+    </aside>
+    
+    <!-- ==========================================
+         CONTEÚDO PRINCIPAL (CONTEINER)
+         ========================================== -->
+    <div class="conteiner">
+        <form action="#">
+            
+            <!-- Campo de Busca -->
+            <label for="Pesquisa"></label>
+            <input class="item" type="search" id="Pesquisa" placeholder="Buscar por Nome, CPF, telefone...">
+
+            <!-- Filtro de Tipo -->
+            <label for="Tipos"></label>
+            <select class="item" name="option" id="Tipos">
+                <option value="todos">Todos os Tipos</option>
+                <option value="pf">Pessoa Física</option>
+                <option value="pj">Pessoa Jurídica</option>
+            </select>
+
+            <!-- Filtro de Ordenação -->
+            <label for="Ordem"></label>
+            <select class="item" name="option" id="Ordem">
+                <option value="az">Ordenar por: Nome (A - Z)</option>
+                <option value="za">Ordenar por: Nome (Z - A)</option>
+                <option value="recentes">Ordenar por mais Recentes</option>
+            </select>  
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">CPF</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+
+</body>
+</html>
