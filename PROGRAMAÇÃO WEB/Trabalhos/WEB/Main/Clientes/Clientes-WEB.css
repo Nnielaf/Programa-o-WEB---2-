@@ -1,0 +1,158 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GLOBAIS E RESETS
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, 
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #F8F6F1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+body {
+    display: flex;
+}
+
+/* ==========================================================================
+   2. ELEMENTOS DE LAYOUT (ESTRUTURA BASE)
+   ========================================================================== */
+aside {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 100%;
+    padding: 15px;
+    background-color: #12352d;
+    font-size: 15px;
+}
+
+.conteiner {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 10vh;
+    left: 40vh;
+    width: 60%;
+    min-height: 65vh;
+    padding: 20px;
+    background-color:#ffffff;
+    box-shadow: 5px 5px 5px 5px #cac8c8;
+    border-radius: 10px;
+}
+
+/* ==========================================================================
+   3. NAVEGAÇÃO E LISTAS (MENU DO ASIDE)
+   ========================================================================== */
+ul {
+    display: grid;
+    position: relative;
+    top: 50px;
+    left: 5px;
+    gap: 10px;
+    min-height: 20vh;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    display: flex;
+    align-self: center;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+li:hover {
+    background-color: #2d554b;
+    font-size: 17px;
+    transition: all 0.5s ease;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   4. FORMULÁRIOS E INPUTS
+   ========================================================================== */
+form {
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+}
+
+.conteiner form .item {
+    flex-grow: 1;
+}
+
+#Pesquisa {
+    flex-grow: 4;
+}
+
+.item {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px 1px 1px 1px #c9c9c9;
+}
+
+.item:hover{
+    font-size: 14px;
+    transition: all 0.5s ease;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 5px;
+}
+
+table th, table td {
+    padding: 20px 15px; /* Espaço em cima/baixo e nas laterais */
+    text-align: left;    /* Alinha o texto à esquerda */
+    border-bottom: 1px solid #ddd; /* Cria uma linha divisória elegante */
+}
+
+/* ==========================================================================
+   5. ELEMENTOS DE TEXTO E TIPOGRAFIA
+   ========================================================================== */
+h1 {
+    color: #ffffff;
+}
+
+h1:hover {
+    font-size: 33px;
+    transition: all 0.5s ease;
+}
+
+/* ==========================================================================
+   6. RODAPÉ (FOOTER)
+   ========================================================================== */
+footer {
+    display: flex;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+footer p {
+    position: absolute;
+    bottom: 80px;
+    color: #ffffff;
+}
+
+.linha {
+    display: flex;
+    position: absolute;
+    bottom: 80px;
+    width: 100px;
+    height: 1px;
+    background-color: white;
+}
