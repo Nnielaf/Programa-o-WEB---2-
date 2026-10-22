@@ -1,0 +1,322 @@
+/* ==========================================================================
+   1. CONFIGURAÇÕES GLOBAIS E RESETS
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: #F8F6F1;
+}
+
+body {
+    display: flex; /* aside e main ficam lado a lado */
+}
+
+/* ==========================================================================
+   2. ELEMENTOS DE LAYOUT (ESTRUTURA BASE)
+   ========================================================================== */
+aside {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 100%;
+    padding: 15px;
+    background-color: #12352d;
+    font-size: 15px;
+}
+
+header p{
+    text-align: right;
+    font-size: 20px;
+    font-weight: 5px;
+}
+
+#Pesquisa{
+    display: flex;
+    flex-direction: row;
+   
+}
+
+#Pesquisa {
+    flex: 1;
+    padding: 12px 16px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #333;
+    background-color: #ffffff;
+    border: 1px solid #d5d9d7;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#Pesquisa::placeholder {
+    color: #8a9692;
+}
+
+#Pesquisa:focus {
+    border-color: #1F5B46;
+    box-shadow: 0 0 0 3px rgba(31, 91, 70, 0.15);
+}
+
+#Pesquisa:hover{
+    font-size: 18px;
+    transition: all 0.5s ease;
+}
+/* Área à direita do aside: botão em cima, tabela + detalhes embaixo */
+.principal {
+    flex: 1;                 /* ocupa todo o espaço que sobrou */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 30px;
+    overflow-y: auto;        /* se o conteúdo crescer, rola só essa área */
+    justify-items: center;
+    
+}
+
+.area {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-block: auto;   /* margem de cima e de baixo automáticas = centraliza na vertical */
+}
+
+.conteiner {
+    flex: 1;                 /* a tabela pega o espaço que sobrar */
+    display: flex;
+    flex-direction: column;
+    min-width: 0;            /* evita a tabela estourar o layout */
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 5px 5px #cac8c8;
+    border-radius: 10px;
+}
+
+
+/* ==========================================================================
+   3. NAVEGAÇÃO E LISTAS (MENU DO ASIDE)
+   ========================================================================== */
+ul {
+    display: grid;
+    position: relative;
+    top: 50px;
+    left: 5px;
+    gap: 10px;
+    min-height: 20vh;
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    display: flex;
+    align-self: center;
+    padding: 10px;
+    border-radius: 7px;
+    font-size: 20px;
+}
+
+li:hover {
+    background-color: #2d554b;
+    font-size: 23px;
+    transition: all 0.5s ease;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   4. FORMULÁRIOS, INPUTS E TABELA
+   ========================================================================== */
+form {
+    display: flex;
+    padding: 5px;
+    gap: 10px;
+}
+
+.conteiner form .item {
+    flex-grow: 0;
+}
+
+#Pesquisa {
+    flex-grow: 1;
+    width: auto;
+}
+
+.conteiner form select.item {
+    width: 200px;
+}
+
+.item {
+    padding: 10px;
+    border-radius: 5px;
+    border: 0;
+    box-shadow: 1px 1px 1px 1px #c9c9c9;
+    margin-bottom: 15px;     /* era 35px */
+    color: rgb(92, 91, 91);
+}
+
+.item:hover {
+    font-size: 14px;
+    transition: all 0.5s ease;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 5px;
+}
+
+table th,
+table td {
+    padding: 8px 12px;
+    font-size: 14px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: rgb(92, 91, 91);
+}
+
+/* Corrigido: o nome da classe agora é igual ao do HTML (linha_titulos) */
+th.linha_titulos {
+    font-family: inherit;
+    font-weight: bold;
+    padding-right: 20px;
+    text-align: left;
+}
+
+/* Largura de cada coluna (soma 100%) */
+table th:nth-child(1) { width: 25%; } /* Nome */
+table th:nth-child(2) { width: 20%; } /* CPF */
+table th:nth-child(3) { width: 20%; } /* Telefone */
+table th:nth-child(4) { width: 20%; } /* Tipo */
+table th:nth-child(5) { width: 15%; } /* Ações */
+
+/* ==========================================================================
+   5. BOTÃO DE CADASTRAR CLIENTE
+   ========================================================================== */
+.cadastroCliente {
+    display: flex;
+    justify-content: flex-end; /* empurra o botão pra direita */
+}
+
+.cadastroCliente button {
+    background-color: #1F5B46;
+    padding: 11px 20px;
+    color: white;
+    font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+    
+}
+
+.cadastroCliente button:hover {
+    background-color: #184E37;
+    font-size: 15px;
+    transition: all 0.5s ease;
+}
+
+/* ==========================================================================
+   6. DETALHES DO CLIENTE
+   ========================================================================== */
+.detalhesCliente {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;             /* largura fixa, a tabela fica com o resto */
+    padding: 15px;
+    background-color: #d4d1c4;
+    border-radius: 10px;
+}
+
+.detalhesCliente p {
+    font-size: 16px;          /* era "1" (sem unidade, não funcionava) */
+}
+
+.informacoesCliente {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px;
+    background-color: rgb(240, 240, 240);
+    border-radius: 5px;
+}
+
+.informacoesCliente div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+}
+
+.EditarCadastro button {
+    width: 100%;
+    padding: 8px;
+    border: 0;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #1F5B46;
+    color: white;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   7. ELEMENTOS DE TEXTO E TIPOGRAFIA
+   ========================================================================== */
+h1 {
+    color: #ffffff;
+}
+
+h1:hover {
+    font-size: 33px;
+    transition: all 0.5s ease;
+}
+
+.titulo dt {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #12352d;
+    margin-bottom: 6px;   
+}
+
+.titulo dd {
+     font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    font-size: 16px;
+    color: #6b7a75;
+}
+
+/* ==========================================================================
+   8. RODAPÉ (FOOTER)
+   ========================================================================== */
+footer {
+    display: flex;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+footer p {
+    position: absolute;
+    bottom: 80px;
+    color: #ffffff;
+}
+
+.linha {
+    display: flex;
+    position: absolute;
+    bottom: 80px;
+    width: 100px;
+    height: 1px;
+    background-color: white;
+}
