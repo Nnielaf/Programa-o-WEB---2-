@@ -320,3 +320,108 @@ footer p {
     height: 1px;
     background-color: white;
 }
+
+/* ==========================================================================
+   RESPONSIVO (colar no FINAL do Style.css, nesta ordem)
+   ========================================================================== */
+
+/* ---------- NOTEBOOK PEQUENO / TABLET DEITADO (até 1100px) ---------- */
+@media (max-width: 1100px) {
+    aside {
+        width: 200px;
+    }
+
+    .detalhesCliente {
+        width: 260px;
+    }
+
+    .conteiner form select.item {
+        width: 160px;
+    }
+}
+
+/* ---------- TABLET (até 900px) ---------- */
+@media (max-width: 900px) {
+    .area {
+        flex-direction: column;   /* tabela em cima, detalhes embaixo */
+        align-items: stretch;     /* as duas caixas ocupam a largura toda */
+    }
+
+    .detalhesCliente {
+        width: 100%;
+    }
+}
+
+/* ---------- CELULAR (até 600px) ---------- */
+@media (max-width: 600px) {
+
+    /* menu lateral vira uma barra no topo */
+    body {
+        flex-direction: column;
+    }
+
+    aside {
+        width: 100%;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        top: 0;
+        left: 0;
+        min-height: 0;
+        margin-top: 10px;
+    }
+
+    li,
+    li:hover {
+        font-size: 16px;
+    }
+
+    footer {
+        display: none;            /* o rodapé do menu não cabe no celular */
+    }
+
+    /* espaçamentos menores */
+    .principal {
+        padding: 15px;
+    }
+
+    .busca-topo {
+        max-width: none;
+    }
+
+    .cabecalho-pagina {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .titulo-pagina h2 {
+        font-size: 32px;
+    }
+
+    /* filtros um embaixo do outro */
+    .conteiner form {
+        flex-direction: column;
+    }
+
+    .conteiner form select.item {
+        width: 100%;
+    }
+
+    .item {
+        margin-bottom: 0;
+    }
+
+    /* tabela rola para o lado em vez de quebrar */
+    .conteiner {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+}
