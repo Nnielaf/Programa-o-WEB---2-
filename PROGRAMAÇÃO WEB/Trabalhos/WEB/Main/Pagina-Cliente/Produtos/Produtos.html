@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Floratta Cerejeira em Flor | oBoticário</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <aside>
+        <h1>oBoticário</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="produto.html" class="ativo">Produtos</a></li>
+                <li><a href="pedidos.html">Meus pedidos</a></li>
+                <li><a href="suporte.html">Suporte</a></li>
+                <li><a href="carrinho.html">Carrinho <span class="badge">2</span></a></li>
+            </ul>
+        </nav>
+        <p class="slogan">Beleza é<br>se sentir bem.<small>OBOTICÁRIO</small></p>
+    </aside>
+
+    <main class="principal">
+        <div class="conteudo">
+
+            <header class="topo">
+                <input class="busca-topo" type="search" aria-label="Buscar"
+                       placeholder="Buscar produtos, marcas e muito mais...">
+                <div class="topo-direita">
+                    <span class="usuario">Olá, Visitante</span>
+                    <a href="carrinho.html" class="carrinho-topo">Carrinho <span class="badge">2</span></a>
+                </div>
+            </header>
+
+            <div class="produto-pagina">
+
+                <!-- Coluna principal -->
+                <div class="coluna-principal">
+
+                    <nav class="migalhas" aria-label="Você está em">
+                        <a href="home.html">Início</a>
+                        <span>›</span>
+                        <a href="#">Produtos</a>
+                        <span>›</span>
+                        <a href="#">Perfumes</a>
+                        <span>›</span>
+                        <span>Floratta</span>
+                    </nav>
+
+                    <section class="produto-grid">
+
+                        <!-- Galeria -->
+                        <div class="galeria">
+                            <div class="miniaturas">
+                                <button type="button" class="miniatura ativa" aria-label="Foto 1"></button>
+                                <button type="button" class="miniatura" aria-label="Foto 2"></button>
+                                <button type="button" class="miniatura" aria-label="Foto 3"></button>
+                                <button type="button" class="miniatura" aria-label="Foto 4"></button>
+                                <button type="button" class="miniatura" aria-label="Foto 5"></button>
+                            </div>
+
+                            <div class="foto-principal">
+                                foto do produto
+                                <button type="button" class="seta-galeria anterior" aria-label="Foto anterior">‹</button>
+                                <button type="button" class="seta-galeria proximo" aria-label="Próxima foto">›</button>
+                            </div>
+                        </div>
+
+                        <!-- Informações -->
+                        <div class="info">
+                            <span class="selo">Mais vendido</span>
+                            <h2>Floratta Cerejeira em Flor</h2>
+                            <p class="subtitulo">Desodorante Colônia, 75 ml</p>
+                            <p class="avaliacao"><span class="estrelas">★★★★★</span> (1.243)</p>
+
+                            <p class="descricao">Uma fragrância floral e envolvente, que combina a delicadeza da cerejeira com a feminilidade única de Floratta.</p>
+
+                            <div class="selos-produto">
+                                <div class="selo-item"><span class="icone"></span>Vegano</div>
+                                <div class="selo-item"><span class="icone"></span>Cruelty Free</div>
+                                <div class="selo-item"><span class="icone"></span>Com refil</div>
+                            </div>
+
+                            <div class="preco-linha">
+                                <span class="preco-grande">R$ 129,90</span>
+                                <span class="preco-antigo">R$ 169,90</span>
+                                <span class="desconto">23% OFF</span>
+                            </div>
+                            <p class="parcelas">ou em até 6x de R$ 21,65 sem juros</p>
+
+                            <div class="compra">
+                                <div class="quantidade">
+                                    <button type="button" aria-label="Diminuir">−</button>
+                                    <span>1</span>
+                                    <button type="button" aria-label="Aumentar">+</button>
+                                </div>
+                                <button type="button" class="btn-comprar">Adicionar ao carrinho</button>
+                                <button type="button" class="btn-favorito">Favoritar</button>
+                            </div>
+
+                            <div class="garantias-produto">
+                                <div class="garantia-item">
+                                    <span class="icone"></span>
+                                    <div><b>Entrega segura</b><small>em todo o Brasil.</small></div>
+                                </div>
+                                <div class="garantia-item">
+                                    <span class="icone"></span>
+                                    <div><b>Embalagem especial</b><small>para presente</small></div>
+                                </div>
+                                <div class="garantia-item">
+                                    <span class="icone"></span>
+                                    <div><b>Troca e devolução</b><small>em até 30 dias</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Você também pode gostar -->
+                    <section>
+                        <nav class="abas-produto" aria-label="Sugestões">
+                            <button type="button" class="aba-produto ativa">Você também pode gostar</button>
+                            <button type="button" class="aba-produto">Produtos da mesma linha</button>
+                        </nav>
+
+                        <div class="carrossel">
+                            <button type="button" class="seta-car esquerda" aria-label="Anterior">‹</button>
+
+                            <div class="cards">
+                                <article class="card">
+                                    <div class="foto"></div>
+                                    <h4>Nativa SPA Ameixa</h4>
+                                    <small>Loção Hidratante, 200 ml</small>
+                                    <span class="estrelas">★★★★☆ <em>(856)</em></span>
+                                    <span class="preco">R$ 49,90</span>
+                                    <button type="button" class="btn-verde">Adicionar ao carrinho</button>
+                                </article>
+                                <article class="card">
+                                    <div class="foto"></div>
+                                    <h4>Malbec Club</h4>
+                                    <small>Desodorante Colônia, 100 ml</small>
+                                    <span class="estrelas">★★★★☆ <em>(952)</em></span>
+                                    <span class="preco">R$ 159,90</span>
+                                    <button type="button" class="btn-verde">Adicionar ao carrinho</button>
+                                </article>
+                                <article class="card">
+                                    <div class="foto"></div>
+                                    <h4>Lily</h4>
+                                    <small>Creme Acetinado, 250 g</small>
+                                    <span class="estrelas">★★★★☆ <em>(411)</em></span>
+                                    <span class="preco">R$ 99,90</span>
+                                    <button type="button" class="btn-verde">Adicionar ao carrinho</button>
+                                </article>
+                                <article class="card">
+                                    <div class="foto"></div>
+                                    <h4>Egeo Dolce</h4>
+                                    <small>Desodorante Colônia, 90 ml</small>
+                                    <span class="estrelas">★★★★☆ <em>(623)</em></span>
+                                    <span class="preco">R$ 139,90</span>
+                                    <button type="button" class="btn-verde">Adicionar ao carrinho</button>
+                                </article>
+                                <article class="card">
+                                    <div class="foto"></div>
+                                    <h4>Floratta Rose</h4>
+                                    <small>Desodorante Colônia, 75 ml</small>
+                                    <span class="estrelas">★★★★☆ <em>(512)</em></span>
+                                    <span class="preco">R$ 129,90</span>
+                                    <button type="button" class="btn-verde">Adicionar ao carrinho</button>
+                                </article>
+                            </div>
+
+                            <button type="button" class="seta-car direita" aria-label="Próximo">›</button>
+                        </div>
+
+                        <div class="pontos" aria-hidden="true">
+                            <span class="ativo"></span><span></span><span></span>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- Coluna lateral -->
+                <div class="lateral">
+
+                    <section class="cartao">
+                        <h3>Detalhes do produto</h3>
+                        <details>
+                            <summary>Descrição completa</summary>
+                            <p>Texto da descrição completa do produto.</p>
+                        </details>
+                        <details>
+                            <summary>Notas olfativas</summary>
+                            <p>Notas de topo, coração e fundo da fragrância.</p>
+                        </details>
+                        <details>
+                            <summary>Modo de uso</summary>
+                            <p>Aplique a certa distância da pele, após o banho.</p>
+                        </details>
+                        <details>
+                            <summary>Ingredientes</summary>
+                            <p>Lista de ingredientes do produto.</p>
+                        </details>
+                        <details>
+                            <summary>Avaliações</summary>
+                            <p>Avaliações de quem já comprou.</p>
+                        </details>
+                    </section>
+
+                    <section class="cartao frete">
+                        <h3>Calcule o frete e o prazo de entrega</h3>
+                        <form action="#">
+                            <input type="text" placeholder="Digite seu CEP" aria-label="CEP">
+                            <button type="button">Calcular</button>
+                        </form>
+                    </section>
+
+                    <section class="cartao presente">
+                        <h3>Presenteie<br>com beleza</h3>
+                        <p>Embalagens especiais e kits exclusivos para tornar cada momento ainda mais único.</p>
+                        <a href="#" class="btn-escuro">Ver opções de presente →</a>
+                    </section>
+
+                </div>
+            </div>
+
+            <!-- Faixa de benefícios -->
+            <section class="faixa">
+                <div class="faixa-item">
+                    <span class="icone"></span>
+                    <div><b>Beleza que cuida</b><small>Produtos que respeitam você e o planeta.</small></div>
+                </div>
+                <div class="faixa-item">
+                    <span class="icone"></span>
+                    <div><b>Qualidade O Boticário</b><small>Tradição e inovação em cada detalhe.</small></div>
+                </div>
+                <div class="faixa-item">
+                    <span class="icone"></span>
+                    <div><b>Compre com segurança</b><small>Seus dados estão protegidos.</small></div>
+                </div>
+                <div class="faixa-marca">
+                    <strong>oBoticário</strong>
+                    <em>Beleza é se sentir bem.</em>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+</body>
+</html>
