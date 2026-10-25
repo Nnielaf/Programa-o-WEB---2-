@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus pedidos | oBoticário</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+
+    <aside>
+        <h1>oBoticário</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="pedidos.html" class="ativo">Meus pedidos</a></li>
+                <li><a href="suporte.html">Suporte</a></li>
+                <li><a href="carrinho.html">Carrinho <span class="badge">2</span></a></li>
+            </ul>
+        </nav>
+        <p class="slogan">Beleza é<br>se sentir bem.<small>OBOTICÁRIO</small></p>
+    </aside>
+
+    <main class="principal">
+        <div class="conteudo">
+
+            <header class="topo">
+                <input class="busca-topo" type="search" aria-label="Buscar"
+                       placeholder="Buscar produtos, marcas e muito mais...">
+                <div class="topo-direita">
+                    <span class="usuario">Olá, Visitante</span>
+                    <a href="carrinho.html" class="carrinho-topo">Carrinho <span class="badge">2</span></a>
+                </div>
+            </header>
+
+            <section class="hero-pedidos">
+                <div>
+                    <h2>Meus pedidos</h2>
+                    <p>Acompanhe o status das suas compras e veja o histórico de pedidos.</p>
+                </div>
+                <p class="frase">Todo pedido é um cuidado chegando até você.</p>
+            </section>
+
+            <nav class="abas" aria-label="Filtrar pedidos">
+                <button type="button" class="aba ativa">Todos</button>
+                <button type="button" class="aba">Em andamento</button>
+                <button type="button" class="aba">Entregues</button>
+                <button type="button" class="aba">Cancelados</button>
+            </nav>
+
+            <div class="pedidos-grid">
+
+                <!-- Coluna da esquerda: pedidos -->
+                <div class="lista-pedidos">
+
+                    <!-- Pedido 1 -->
+                    <article class="pedido">
+                        <div class="pedido-topo">
+                            <div class="pedido-info">
+                                <span class="icone"></span>
+                                <div>
+                                    <b>Pedido #OB123456789</b>
+                                    <small>18 de Out. de 2024 • 4 itens</small>
+                                    <span class="status andamento">Em andamento</span>
+                                </div>
+                            </div>
+
+                            <ol class="etapas">
+                                <li class="feita"><span class="ponto"></span>Pedido realizado<small>18/10</small></li>
+                                <li class="atual"><span class="ponto"></span>Em separação<small>19/10</small></li>
+                                <li><span class="ponto"></span>Em trânsito<small>&nbsp;</small></li>
+                                <li><span class="ponto"></span>Entregue<small>&nbsp;</small></li>
+                            </ol>
+
+                            <a href="#" class="btn-detalhes">Ver detalhes →</a>
+                        </div>
+
+                        <div class="pedido-corpo">
+                            <div class="itens-pedido">
+                                <div class="pedido-item"><div class="foto"></div><span>Floratta Cerejeira em Flor<small>1 un.</small></span></div>
+                                <div class="pedido-item"><div class="foto"></div><span>Nativa SPA Ameixa<small>1 un.</small></span></div>
+                                <div class="pedido-item"><div class="foto"></div><span>Malbec Club<small>1 un.</small></span></div>
+                                <div class="pedido-item"><div class="foto"></div><span>Lily<small>1 un.</small></span></div>
+                            </div>
+
+                            <div class="entrega">
+                                <span class="icone pequeno"></span>
+                                <div>
+                                    <small>Previsão de entrega</small>
+                                    <b>22 de Out. de 2024</b>
+                                    <small>Entrega por</small>
+                                    <b>Correios</b>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Pedido 2 -->
+                    <article class="pedido">
+                        <div class="pedido-topo">
+                            <div class="pedido-info">
+                                <span class="icone"></span>
+                                <div>
+                                    <b>Pedido #OB987654321</b>
+                                    <small>02 de Out. de 2024 • 2 itens</small>
+                                    <span class="status entregue">Entregue</span>
+                                </div>
+                            </div>
+
+                            <ol class="etapas">
+                                <li class="feita"><span class="ponto"></span>Pedido realizado<small>02/10</small></li>
+                                <li class="feita"><span class="ponto"></span>Em separação<small>03/10</small></li>
+                                <li class="feita"><span class="ponto"></span>Em trânsito<small>04/10</small></li>
+                                <li class="feita final"><span class="ponto"></span>Entregue<small>07/10</small></li>
+                            </ol>
+
+                            <a href="#" class="btn-detalhes">Ver detalhes →</a>
+                        </div>
+
+                        <div class="pedido-corpo">
+                            <div class="itens-pedido">
+                                <div class="pedido-item lado"><div class="foto"></div><span>Egeo Dolce<small>1 un.</small></span></div>
+                                <div class="pedido-item lado"><div class="foto"></div><span>Cuide-se Bem<small>1 un.</small></span></div>
+                            </div>
+
+                            <div class="entrega">
+                                <span class="icone pequeno"></span>
+                                <div>
+                                    <small>Entregue em</small>
+                                    <b>07 de Out. de 2024</b>
+                                    <small>Entrega por</small>
+                                    <b>Correios</b>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Pedido 3 -->
+                    <article class="pedido">
+                        <div class="pedido-topo">
+                            <div class="pedido-info">
+                                <span class="icone"></span>
+                                <div>
+                                    <b>Pedido #OB456123789</b>
+                                    <small>15 de Set. de 2024 • 3 itens</small>
+                                    <span class="status entregue">Entregue</span>
+                                </div>
+                            </div>
+
+                            <ol class="etapas">
+                                <li class="feita"><span class="ponto"></span>Pedido realizado<small>15/09</small></li>
+                                <li class="feita"><span class="ponto"></span>Em separação<small>16/09</small></li>
+                                <li class="feita"><span class="ponto"></span>Em trânsito<small>17/09</small></li>
+                                <li class="feita final"><span class="ponto"></span>Entregue<small>20/09</small></li>
+                            </ol>
+
+                            <a href="#" class="btn-detalhes">Ver detalhes →</a>
+                        </div>
+
+                        <div class="pedido-corpo">
+                            <div class="itens-pedido">
+                                <div class="pedido-item lado"><div class="foto"></div><span>Nativa SPA Rosé<small>1 un.</small></span></div>
+                                <div class="pedido-item lado"><div class="foto"></div><span>Malbec<small>1 un.</small></span></div>
+                                <div class="pedido-item lado"><div class="foto"></div><span>Floratta Blue<small>1 un.</small></span></div>
+                            </div>
+
+                            <div class="entrega">
+                                <span class="icone pequeno"></span>
+                                <div>
+                                    <small>Entregue em</small>
+                                    <b>20 de Set. de 2024</b>
+                                    <small>Entrega por</small>
+                                    <b>Correios</b>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+
+                <!-- Coluna da direita: avisos -->
+                <div class="lateral">
+
+                    <section class="aviso">
+                        <span class="icone"></span>
+                        <div>
+                            <h3>Precisa de ajuda?</h3>
+                            <p>Tire suas dúvidas, acompanhe seu pedido ou fale com a gente.</p>
+                            <a href="suporte.html" class="btn-escuro">Acessar suporte →</a>
+                        </div>
+                    </section>
+
+                    <section class="aviso">
+                        <span class="icone"></span>
+                        <div>
+                            <h3>Dúvidas sobre seu pedido?</h3>
+                            <p>Confira as perguntas frequentes sobre prazos, entregas, trocas e devoluções.</p>
+                            <a href="suporte.html#faq" class="btn-escuro">Ver perguntas frequentes →</a>
+                        </div>
+                    </section>
+
+                    <section class="aviso">
+                        <span class="icone"></span>
+                        <div>
+                            <h3>Frete grátis</h3>
+                            <p>Em compras a partir de R$ 199,00 para todo o Brasil.</p>
+                            <a href="#" class="link">Ver condições →</a>
+                        </div>
+                    </section>
+
+                    <section class="aviso destaque">
+                        <span class="icone"></span>
+                        <div>
+                            <h3>Sua beleza<br>é o que nos move.</h3>
