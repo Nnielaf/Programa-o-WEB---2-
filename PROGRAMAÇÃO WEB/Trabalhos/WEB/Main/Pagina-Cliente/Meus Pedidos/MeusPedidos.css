@@ -1,0 +1,368 @@
+/* =========================================================
+   1. Variáveis e reset
+   ========================================================= */
+:root {
+  --green-dark: #022d25;
+  --green: #06392e;
+  --green-light: #115342;
+  --text: #103d33;
+  --text-soft: #537067;
+  --border: #d8e0da;
+  --background: #edf1ed;
+  --surface: #ffffff;
+  --surface-soft: #fafbf9;
+  --mint: #e3eee5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+html, body { height: 100%; }
+
+body {
+  display: flex;                 /* menu e conteúdo lado a lado */
+  background: var(--background);
+  color: var(--text);
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+button, input { font: inherit; }
+
+h1, h2, h3 {
+  color: var(--text);
+  font-family: "Playfair Display", Georgia, serif;
+}
+
+/* =========================================================
+   2. Barra lateral
+   ========================================================= */
+aside {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 195px;
+  height: 100%;
+  padding: 20px 14px;
+  overflow: hidden;
+  color: #ffffff;
+  background: var(--green-dark);
+}
+
+aside h1 {
+  margin: 0 14px 31px;
+  color: #ffffff;
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+aside nav ul { display: grid; gap: 4px; }
+
+aside nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 15px;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 13px;
+}
+
+aside nav a:hover,
+aside nav a.ativo { background: var(--green-light); }
+
+.badge {
+  display: grid;
+  place-items: center;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  color: var(--green);
+  background: #f2f5f1;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.slogan {
+  margin: auto 0 0 10px;         /* auto em cima = empurra pro fim do menu */
+  font: italic 16px/1.1 Georgia, serif;
+}
+
+.slogan small {
+  display: block;
+  margin-top: 14px;
+  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 10px;
+  font-style: normal;
+}
+
+/* =========================================================
+   3. Área principal e topo
+   ========================================================= */
+.principal {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+.conteudo {
+  min-height: 100%;
+  padding: 20px 17px 32px;
+  background: var(--surface);
+}
+
+.topo {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 18px;
+}
+
+.busca-topo {
+  flex: 1;
+  height: 38px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: 0;
+  color: var(--text);
+  background: var(--surface-soft);
+  font-size: 12px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.busca-topo:focus {
+  border-color: var(--green-light);
+  box-shadow: 0 0 0 3px rgba(17, 83, 66, 0.15);
+}
+
+.topo-direita {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: auto;             /* empurra o grupo pra direita */
+  color: var(--green-dark);
+  font-size: 12px;
+}
+
+.usuario { font-weight: 700; }
+
+.carrinho-topo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.carrinho-topo .badge {
+  color: #ffffff;
+  background: var(--green-dark);
+}
+
+/* =========================================================
+   4. Banner e abas
+   ========================================================= */
+.hero-pedidos {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+  min-height: 130px;
+  padding: 24px 40px;
+  border-radius: 8px;
+  color: #ffffff;
+  background: linear-gradient(120deg, var(--green-light), #4d7a5a);
+}
+
+.hero-pedidos h2 {
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-size: 34px;
+}
+
+.hero-pedidos p { font-size: 15px; }
+
+.frase {
+  max-width: 200px;
+  color: #e6efe8;
+  font: italic 18px/1.4 Georgia, serif;
+}
+
+.abas {
+  display: flex;
+  width: fit-content;
+  gap: 4px;
+  margin-top: 18px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--mint);
+}
+
+.aba {
+  padding: 10px 22px;
+  border: 0;
+  border-radius: 999px;
+  color: var(--text);
+  background: transparent;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.aba:hover { background: rgba(2, 45, 37, 0.08); }
+
+.aba.ativa {
+  color: #ffffff;
+  background: var(--green-dark);
+}
+
+/* =========================================================
+   5. Estrutura: pedidos à esquerda, avisos à direita
+   ========================================================= */
+.pedidos-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  align-items: start;            /* cada coluna com a altura do próprio conteúdo */
+  margin-top: 16px;
+}
+
+.lista-pedidos {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+/* =========================================================
+   6. Cartão de pedido
+   ========================================================= */
+.pedido {
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fcfdfb;
+}
+
+.pedido-topo {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) auto;   /* info | etapas | botão */
+  align-items: center;
+  gap: 20px;
+}
+
+.pedido-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.pedido-info b { display: block; font-size: 13px; }
+
+.pedido-info small {
+  display: block;
+  margin: 3px 0 8px;
+  color: var(--text-soft);
+  font-size: 11px;
+}
+
+.icone {                          /* círculo onde entraria um ícone */
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--mint);
+}
+
+.icone.pequeno { width: 36px; height: 36px; }
+
+.status {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 5px;
+  color: var(--green-light);
+  background: var(--mint);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status.entregue { background: #cfe3d3; }
+
+/* Linha do tempo */
+.etapas {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.etapas li {
+  position: relative;            /* referência da linha que liga as etapas */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  text-align: center;
+}
+
+.etapas small {
+  color: var(--text-soft);
+  font-size: 11px;
+}
+
+.ponto {
+  position: relative;
+  z-index: 1;                    /* fica por cima da linha */
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.etapas li + li::before {        /* linha do centro da etapa anterior até o centro desta */
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--border);
+}
+
+.etapas .feita::before,
+.etapas .atual::before { background: var(--green-light); }
+
+.etapas .feita .ponto {
+  border-color: var(--green-light);
+  background: var(--green-light);
+}
+
+.etapas .atual .ponto {
+  border-color: var(--green-light);
+  box-shadow: 0 0 0 3px rgba(17, 83, 66, 0.15);
+}
+
+.etapas .final .ponto {
+  border-color: var(--green-dark);
+  background: var(--green-dark);
+}
+
+.btn-detalhes {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px;
+  border: 1px solid var(--green-dark);
+  border-radius: 6px;
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: 600;
+}
