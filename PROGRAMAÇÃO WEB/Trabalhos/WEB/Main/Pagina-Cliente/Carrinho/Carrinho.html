@@ -1,1 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho | oBoticário</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
 
+    <aside>
+        <h1>oBoticário</h1>
+        <nav>
+            <ul>
+                <li><a href="home.html">Início</a></li>
+                <li><a href="#">Produtos</a></li>
+                <li><a href="#">Meus pedidos</a></li>
+                <li><a href="suporte.html">Suporte</a></li>
+                <li><a href="carrinho.html" class="ativo">Carrinho <span class="badge">4</span></a></li>
+            </ul>
+        </nav>
+        <p class="slogan">Beleza é<br>se sentir bem.<small>OBOTICÁRIO</small></p>
+    </aside>
+
+    <main class="principal">
+        <div class="conteudo">
+
+            <header class="topo">
+                <input class="busca-topo" type="search" aria-label="Buscar"
+                       placeholder="Buscar produtos, marcas e muito mais...">
+                <div class="topo-direita">
+                    <span class="usuario">Olá, Visitante</span>
+                    <a href="carrinho.html" class="carrinho-topo">Carrinho <span class="badge">4</span></a>
+                </div>
+            </header>
+
+            <section class="hero-carrinho">
+                <div>
+                    <h2>Seu carrinho</h2>
+                    <p>Confira seus produtos e finalize sua compra.</p>
+                </div>
+                <p class="frase">Pequenos cuidados fazem grandes dias.</p>
+            </section>
+
+            <div class="carrinho-grid">
+
+                <!-- Coluna da esquerda: produtos + sugestões -->
+                <div class="coluna-esquerda">
+
+                    <section class="cartao">
+                        <div class="cartao-topo">
+                            <h3>Produtos selecionados (4)</h3>
+                            <a href="#">Continuar comprando →</a>
+                        </div>
+
+                        <div class="lista">
+                            <div class="lista-cab">
+                                <span>Produto</span>
+                                <span>Preço</span>
+                                <span>Quantidade</span>
+                                <span>Subtotal</span>
+                                <span></span>
+                            </div>
+
+                            <article class="item">
+                                <div class="produto-info">
+                                    <div class="foto"></div>
+                                    <div>
+                                        <h4>Floratta Cerejeira em Flor</h4>
+                                        <small>Desodorante Colônia, 75 ml</small><br>
+                                        <span class="tag">Perfume</span>
+                                    </div>
+                                </div>
+                                <span class="preco">R$ 129,90</span>
+                                <div class="quantidade">
+                                    <button type="button" aria-label="Diminuir">−</button>
+                                    <span>1</span>
+                                    <button type="button" aria-label="Aumentar">+</button>
+                                </div>
+                                <span class="preco">R$ 129,90</span>
+                                <button type="button" class="remover">Remover</button>
+                            </article>
+
+                            <article class="item">
+                                <div class="produto-info">
+                                    <div class="foto"></div>
+                                    <div>
+                                        <h4>Nativa SPA Ameixa</h4>
+                                        <small>Loção Hidratante Desodorante, 200 ml</small><br>
+                                        <span class="tag">Hidratante corporal</span>
+                                    </div>
+                                </div>
+                                <span class="preco">R$ 49,90</span>
+                                <div class="quantidade">
+                                    <button type="button" aria-label="Diminuir">−</button>
+                                    <span>1</span>
+                                    <button type="button" aria-label="Aumentar">+</button>
+                                </div>
+                                <span class="preco">R$ 49,90</span>
+                                <button type="button" class="remover">Remover</button>
+                            </article>
+
+                            <article class="item">
+                                <div class="produto-info">
+                                    <div class="foto"></div>
+                                    <div>
+                                        <h4>Malbec Club</h4>
+                                        <small>Desodorante Colônia, 100 ml</small><br>
+                                        <span class="tag">Perfume</span>
+                                    </div>
+                                </div>
+                                <span class="preco">R$ 159,90</span>
+                                <div class="quantidade">
+                                    <button type="button" aria-label="Diminuir">−</button>
+                                    <span>1</span>
+                                    <button type="button" aria-label="Aumentar">+</button>
+                                </div>
+                                <span class="preco">R$ 159,90</span>
+                                <button type="button" class="remover">Remover</button>
+                            </article>
+
+                            <article class="item">
+                                <div class="produto-info">
+                                    <div class="foto"></div>
+                                    <div>
+                                        <h4>Lily</h4>
+                                        <small>Creme Acetinado, 250 g</small><br>
+                                        <span class="tag">Hidratante corporal</span>
+                                    </div>
+                                </div>
+                                <span class="preco">R$ 99,90</span>
+                                <div class="quantidade">
+                                    <button type="button" aria-label="Diminuir">−</button>
+                                    <span>1</span>
+                                    <button type="button" aria-label="Aumentar">+</button>
+                                </div>
+                                <span class="preco">R$ 99,90</span>
+                                <button type="button" class="remover">Remover</button>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="cartao sugestoes">
+                        <div class="cartao-topo">
+                            <div>
+                                <h3>Você pode gostar</h3>
+                                <p class="sub">Produtos que combinam com o seu carrinho.</p>
+                            </div>
+                            <a href="#">Ver mais →</a>
+                        </div>
+
+                        <div class="sugestoes-grid">
+                            <article class="sugestao">
+                                <div class="sugestao-topo">
+                                    <div class="foto"></div>
+                                    <div><h4>Egeo Dolce</h4><small>Desodorante Colônia, 90 ml</small></div>
+                                </div>
+                                <div class="sugestao-rodape">
+                                    <span class="preco">R$ 139,90</span>
+                                    <button type="button" class="btn-add" aria-label="Adicionar ao carrinho">+</button>
+                                </div>
+                            </article>
+
+                            <article class="sugestao">
+                                <div class="sugestao-topo">
+                                    <div class="foto"></div>
+                                    <div><h4>Cuide-se Bem</h4><small>Sabonete Líquido, 400 ml</small></div>
+                                </div>
+                                <div class="sugestao-rodape">
+                                    <span class="preco">R$ 39,90</span>
+                                    <button type="button" class="btn-add" aria-label="Adicionar ao carrinho">+</button>
+                                </div>
+                            </article>
+
+                            <article class="sugestao">
+                                <div class="sugestao-topo">
+                                    <div class="foto"></div>
+                                    <div><h4>Nativa SPA Baunilha</h4><small>Loção Hidratante, 400 ml</small></div>
+                                </div>
+                                <div class="sugestao-rodape">
+                                    <span class="preco">R$ 69,90</span>
+                                    <button type="button" class="btn-add" aria-label="Adicionar ao carrinho">+</button>
+                                </div>
+                            </article>
+
+                            <article class="sugestao">
+                                <div class="sugestao-topo">
+                                    <div class="foto"></div>
+                                    <div><h4>Malbec</h4><small>Desodorante Colônia, 100 ml</small></div>
+                                </div>
+                                <div class="sugestao-rodape">
+                                    <span class="preco">R$ 159,90</span>
+                                    <button type="button" class="btn-add" aria-label="Adicionar ao carrinho">+</button>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- Coluna da direita: resumo do pedido -->
+                <section class="cartao resumo">
+                    <h3>Resumo do pedido</h3>
+
+                    <div class="resumo-linha">
+                        <span>Subtotal (4 itens)</span>
+                        <b>R$ 439,60</b>
+                    </div>
+
+                    <div class="resumo-linha">
+                        <span>Frete</span>
+                        <a href="#">Calcular</a>
+                    </div>
+
+                    <form class="cupom" action="#">
+                        <input type="text" placeholder="Digite seu cupom de desconto" aria-label="Cupom de desconto">
+                        <button type="button">Aplicar</button>
+                    </form>
+
+                    <div class="total">
+                        <div class="resumo-linha">
+                            <span>Total</span>
+                            <strong>R$ 439,60</strong>
+                        </div>
+                        <p>ou em até 6x de R$ 73,27 sem juros</p>
+                    </div>
+
+                    <button type="button" class="btn-finalizar">Finalizar compra</button>
+                    <a href="#" class="btn-voltar">← Continuar comprando</a>
+
+                    <div class="garantias">
+                        <div class="garantia">
+                            <span class="icone pequeno"></span>
+                            <div><b>Frete seguro e rastreado</b><small>Acompanhe seu pedido em tempo real.</small></div>
+                        </div>
+                        <div class="garantia">
+                            <span class="icone pequeno"></span>
+                            <div><b>Compra segura</b><small>Seus dados protegidos sempre.</small></div>
+                        </div>
+                        <div class="garantia">
+                            <span class="icone pequeno"></span>
+                            <div><b>Dúvidas?</b><small>Acesse nossa central de atendimento.</small></div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
