@@ -1,0 +1,938 @@
+
+<!DOCTYPE html> 
+
+ <html lang="pt-BR"> 
+
+ <head> 
+
+ <meta charset="UTF-8"> 
+
+ <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+ <title>Gestão de Selos de Estacionamento</title> 
+
+ <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+
+ <style> 
+
+ *{box-sizing:border-box} 
+
+ body{margin:0;background:#f1f5f9;color:#1e293b;font-family:Arial,sans-serif} 
+
+ header{background:#15324b;color:white;padding:25px 4%} 
+
+ header h1{margin:0 0 8px} 
+
+ main{max-width:1400px;margin:auto;padding:24px} 
+
+ .card{background:white;border-radius:12px;padding:20px;border:1px solid #e2e8f0;margin-bottom:18px} 
+
+ h2{font-size:18px;color:#15324b;margin-top:0} 
+
+ h3{font-size:15px;color:#334155} 
+
+ .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:18px} 
+
+ .two{display:grid;grid-template-columns:1fr 1fr;gap:18px} 
+
+ .kpi small{color:#64748b;font-weight:bold;text-transform:uppercase;font-size:11px} 
+
+ .kpi strong{display:block;font-size:27px;margin:10px 0;color:#15324b} 
+
+ .fields{display:grid;grid-template-columns:1fr 1fr;gap:12px} 
+
+ .full{grid-column:1/-1} 
+
+ label{display:block;font-size:12px;font-weight:bold;margin-bottom:5px;color:#475569} 
+
+ input,select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:7px;font-size:14px} 
+
+ textarea{min-height:60px} 
+
+ button{background:#2563eb;color:white;border:0;border-radius:7px;padding:11px 15px;font-weight:bold;cursor:pointer} 
+
+ .secondary{background:#e2e8f0;color:#15324b} 
+
+ .danger{background:#b91c1c} 
+
+ .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px} 
+
+ table{width:100%;border-collapse:collapse;font-size:12px;min-width:850px} 
+
+ th,td{padding:11px 8px;border-bottom:1px solid #e2e8f0;text-align:left} 
+
+ th{background:#f8fafc;color:#64748b} 
+
+ .tablewrap{overflow-x:auto} 
+
+ .progress{height:10px;background:#e2e8f0;border-radius:20px;overflow:hidden;margin-top:10px} 
+
+ .progress div{height:100%;background:#2563eb} 
+
+ .metric{font-size:23px;font-weight:bold;color:#15324b;margin:8px 0} 
+
+ .note{font-size:12px;color:#64748b;line-height:1.5} 
+
+ #qr{min-height:190px;display:flex;align-items:center;justify-content:center} 
+
+ #qr img{width:180px;height:180px} 
+
+ .alert{padding:13px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;margin-bottom:18px;font-size:13px;color:#9a3412} 
+
+ @media(max-width:850px){.grid{grid-template-columns:1fr 1fr}.two{grid-template-columns:1fr}} 
+
+ @media(max-width:500px){main{padding:12px}.grid{grid-template-columns:1fr}.fields{grid-template-columns:1fr}.full{grid-column:auto}} 
+
+ </style> 
+
+ </head> 
+
+ <body> 
+
+ <header> 
+
+ <h1>Controle Gerencial de Selos de Estacionamento</h1> 
+
+ <p>Estoque • Retiradas • Consumo • Custos • Fechamento mensal</p> 
+
+ </header> 
+
+ <main> 
+
+ <div class="alert"> 
+
+ <strong>Atenção:</strong> Os dados ficam armazenados neste navegador. Faça backups periódicos. O QR Code direciona ao formulário compartilhado. Para receber as respostas automaticamente, será necessária integração com uma base central. 
+
+ </div> 
+
+ <div class="grid"> 
+
+ <div class="card kpi"> 
+
+ <small>Estoque disponível</small> 
+
+ <strong id="stock">600</strong> 
+
+ <small>Selos disponíveis</small> 
+
+ </div> 
+
+ <div class="card kpi"> 
+
+ <small>Valor em estoque</small> 
+
+ <strong id="stockValue">R$ 3.300,00</strong> 
+
+ <small>Valor estimado</small> 
+
+ </div> 
+
+ <div class="card kpi"> 
+
+ <small>Total consumido</small> 
+
+ <strong id="used">0</strong> 
+
+ <small>Selos retirados</small> 
+
+ </div> 
+
+ <div class="card kpi"> 
+
+ <small>Previsão de duração</small> 
+
+ <strong id="forecast">—</strong> 
+
+ <small id="forecastText">Aguardando histórico</small> 
+
+ </div> 
+
+ </div> 
+
+ <div class="two"> 
+
+ <section class="card"> 
+
+ <h2>1. Entrada de novos selos</h2> 
+
+ <form id="receiptForm"> 
+
+ <div class="fields"> 
+
+ <div><label>Data</label><input type="date" id="receiptDate" required></div> 
+
+ <div><label>Quantidade recebida</label><input type="number" id="receiptQty" value="600" min="1" required></div> 
+
+ <div><label>Custo unitário (R$)</label><input type="number" id="unitCost" value="5.50" min="0" step=".01" required></div> 
+
+ <div><label>Identificação do talão</label><input id="batch" placeholder="Talão 001"></div> 
+
+ <div class="full"><button type="submit">Registrar recebimento</button></div> 
+
+ </div> 
+
+ </form> 
+
+ <hr> 
+
+ <div class="fields"> 
+
+ <div><label>Consumo médio diário (selos)</label><input type="number" id="dailyAverage" min="0" step=".1" placeholder="Automático"></div> 
+
+ <div><label>Alerta de estoque mínimo</label><input type="number" id="minimum" value="100" min="0"></div> 
+
+ </div> 
+
+ <p id="stockAlert" class="note"></p> 
+
+ </section> 
+
+ <section class="card"> 
+
+ <h2>2. QR Code para equipe médica</h2> 
+
+ <label>Link do formulário compartilhado</label> 
+
+ <input type="url" id="formLink" placeholder="Cole o link do Microsoft Forms ou Google Forms"> 
+
+ <div class="actions"> 
+
+ <button type="button" onclick="generateQR()">Gerar QR Code</button> 
+
+ <button type="button" class="secondary" onclick="downloadQR()">Baixar QR Code</button> 
+
+ </div> 
+
+ <div id="qr">QR Code aparecerá aqui</div> 
+
+ <p class="note">Campos sugeridos: nome, CRM, especialidade, motivo, área responsável e quantidade. Configure o formulário para registrar data e hora.</p> 
+
+ </section> 
+
+ </div> 
+
+ <div class="two"> 
+
+ <section class="card"> 
+
+ <h2>3. Registro de retirada</h2> 
+
+ <form id="withdrawForm"> 
+
+ <div class="fields"> 
+
+ <div><label>Data</label><input type="date" id="date" required></div> 
+
+ <div><label>Quantidade</label><input type="number" id="qty" value="1" min="1" required></div> 
+
+ <div><label>Nome do médico</label><input id="doctor" required></div> 
+
+ <div><label>CRM</label><input id="crm" required></div> 
+
+ <div><label>Especialidade</label><input id="specialty" required></div> 
+
+ <div> 
+
+ <label>Motivo</label> 
+
+ <select id="reason" required> 
+
+ <option value="">Selecione</option> 
+
+ <option>Atendimento / procedimento</option> 
+
+ <option>Plantão</option> 
+
+ <option>Cirurgia</option> 
+
+ <option>Reunião / visita</option> 
+
+ <option>Pronto-socorro sem crachá</option> 
+
+ <option>Outro</option> 
+
+ </select> 
+
+ </div> 
+
+ <div class="full"> 
+
+ <label>Centro de custo / área</label> 
+
+ <select id="area" required> 
+
+ <option value="">Selecione</option> 
+
+ <option>Pronto-socorro</option> 
+
+ <option>Centro cirúrgico</option> 
+
+ <option>UTI</option> 
+
+ <option>Internação</option> 
+
+ <option>Centro de diagnóstico</option> 
+
+ <option>Oncologia</option> 
+
+ <option>Diretoria</option> 
+
+ <option>Outros</option> 
+
+ </select> 
+
+ </div> 
+
+ <div class="full"><label>Observações</label><textarea id="notes"></textarea></div> 
+
+ <div class="full"><button type="submit">Registrar retirada</button></div> 
+
+ </div> 
+
+ </form> 
+
+ </section> 
+
+ <section class="card"> 
+
+ <h2>4. Controle financeiro</h2> 
+
+ <p class="note">Valores calculados com base no custo dos selos.</p> 
+
+ <div class="metric" id="receivedMoney">R$ 3.300,00</div> 
+
+ <small>Valor total recebido</small> 
+
+ <hr> 
+
+ <div class="metric" id="usedMoney">R$ 0,00</div> 
+
+ <small>Valor total consumido</small> 
+
+ <hr> 
+
+ <div class="metric" id="balanceMoney">R$ 3.300,00</div> 
+
+ <small>Valor estimado em estoque</small> 
+
+ <div class="progress"><div id="progress" style="width:0%"></div></div> 
+
+ <p id="consumptionText" class="note">0% do estoque consumido</p> 
+
+ </section> 
+
+ </div> 
+
+ <section class="card"> 
+
+ <h2>5. Análise mensal e fechamento</h2> 
+
+ <div class="fields"> 
+
+ <div><label>Mês de referência</label><input type="month" id="month"></div> 
+
+ <div><label>Fechamento</label><button type="button" onclick="closeMonth()">Fechar mês e salvar resumo</button></div> 
+
+ </div> 
+
+ <div class="grid" style="margin-top:20px"> 
+
+ <div class="card kpi"><small>Selos no mês</small><strong id="monthQty">0</strong></div> 
+
+ <div class="card kpi"><small>Custo mensal</small><strong id="monthValue">R$ 0,00</strong></div> 
+
+ <div class="card kpi"><small>Profissionais</small><strong id="monthPeople">0</strong></div> 
+
+ <div class="card kpi"><small>Áreas atendidas</small><strong id="monthAreas">0</strong></div> 
+
+ </div> 
+
+ <div class="two"> 
+
+ <div class="card"> 
+
+ <h3>Consumo por motivo</h3> 
+
+ <canvas id="reasonChart"></canvas> 
+
+ </div> 
+
+ <div class="card"> 
+
+ <h3>Consumo por centro de custo</h3> 
+
+ <canvas id="areaChart"></canvas> 
+
+ </div> 
+
+ </div> 
+
+ <div id="closeMessage" class="note"></div> 
+
+ </section> 
+
+ <section class="card"> 
+
+ <h2>6. Histórico completo de movimentações</h2> 
+
+ <div class="tablewrap"> 
+
+ <table> 
+
+ <thead> 
+
+ <tr> 
+
+ <th>Data</th><th>Tipo</th><th>Profissional / Talão</th> 
+
+ <th>CRM</th><th>Especialidade</th><th>Motivo</th> 
+
+ <th>Área</th><th>Quantidade</th><th>Valor</th> 
+
+ </tr> 
+
+ </thead> 
+
+ <tbody id="history"></tbody> 
+
+ </table> 
+
+ </div> 
+
+ <div class="actions"> 
+
+ <button onclick="exportCSV()" class="secondary">Exportar CSV</button> 
+
+ <button onclick="backup()" class="secondary">Salvar backup JSON</button> 
+
+ <label class="secondary" style="padding:11px;border-radius:7px;cursor:pointer"> 
+
+ Importar backup <input type="file" id="importFile" accept=".json" hidden onchange="importBackup(event)"> 
+
+ </label> 
+
+ <button onclick="clearData()" class="danger">Apagar todos os dados</button> 
+
+ </div> 
+
+ </section> 
+
+ <footer class="note" style="text-align:center;padding:20px"> 
+
+ Painel gerencial de estacionamento • Controle interno 
+
+ </footer> 
+
+ </main> 
+
+ <script> 
+
+ const KEY="controle_selos_gerencial_v3"; 
+
+ const $=id=>document.getElementById(id); 
+
+ const today=new Date().toISOString().slice(0,10); 
+
+ let state={receipts:[],withdrawals:[],closures:[]}; 
+
+ let reasonChart=null,areaChart=null; 
+
+ function money(n){ 
+
+ return Number(n||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"}); 
+
+ } 
+
+ function escapeHTML(v){ 
+
+ return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); 
+
+ } 
+
+ function persist(){ 
+
+ localStorage.setItem(KEY,JSON.stringify(state)); 
+
+ render(); 
+
+ } 
+
+ function load(){ 
+
+ try{ 
+
+ const saved=localStorage.getItem(KEY); 
+
+ if(saved)state=JSON.parse(saved); 
+
+ }catch(e){alert("Não foi possível carregar os dados salvos.");} 
+
+ } 
+
+ function total(){ 
+
+ const received=state.receipts.reduce((a,r)=>a+Number(r.qty),0); 
+
+ const used=state.withdrawals.reduce((a,w)=>a+Number(w.qty),0); 
+
+ return {received,used,stock:received-used}; 
+
+ } 
+
+ function costUsed(w){ 
+
+ return Number(w.cost||5.5)*Number(w.qty); 
+
+ } 
+
+ function addReceipt(e){ 
+
+ e.preventDefault(); 
+
+ const qty=Number($("receiptQty").value); 
+
+ const cost=Number($("unitCost").value); 
+
+ if(qty<=0||cost<0)return; 
+
+ state.receipts.push({ 
+
+ id:crypto.randomUUID(), 
+
+ date:$("receiptDate").value, 
+
+ qty,cost, 
+
+ batch:$("batch").value.trim()||"Sem identificação" 
+
+ }); 
+
+ $("batch").value=""; 
+
+ persist(); 
+
+ } 
+
+ function addWithdrawal(e){ 
+
+ e.preventDefault(); 
+
+ const qty=Number($("qty").value); 
+
+ const t=total(); 
+
+ if(qty<=0)return; 
+
+ if(qty>t.stock){ 
+
+ alert("Estoque insuficiente. Disponível: "+t.stock); 
+
+ return; 
+
+ } 
+
+ const latestReceipt=state.receipts.length? 
+
+ state.receipts[state.receipts.length-1].cost:5.5; 
+
+ state.withdrawals.push({ 
+
+ id:crypto.randomUUID(), 
+
+ date:$("date").value, 
+
+ qty, 
+
+ doctor:$("doctor").value.trim(), 
+
+ crm:$("crm").value.trim(), 
+
+ specialty:$("specialty").value.trim(), 
+
+ reason:$("reason").value, 
+
+ area:$("area").value, 
+
+ notes:$("notes").value.trim(), 
+
+ cost:latestReceipt 
+
+ }); 
+
+ ["doctor","crm","specialty","notes"].forEach(id=>$(id).value=""); 
+
+ ["reason","area"].forEach(id=>$(id).value=""); 
+
+ $("qty").value=1; 
+
+ persist(); 
+
+ } 
+
+ function render(){ 
+
+ const t=total(); 
+
+ const receivedValue=state.receipts.reduce((a,r)=>a+Number(r.qty)*Number(r.cost),0); 
+
+ const usedValue=state.withdrawals.reduce((a,w)=>a+costUsed(w),0); 
+
+ const stockValue=state.withdrawals.reduce((a,w)=>a+costUsed(w),0); 
+
+ const averageCost=t.received?receivedValue/t.received:5.5; 
+
+ const balance=Math.max(0,receivedValue-usedValue); 
+
+ $("stock").textContent=t.stock.toLocaleString("pt-BR"); 
+
+ $("stockValue").textContent=money(balance); 
+
+ $("used").textContent=t.used.toLocaleString("pt-BR"); 
+
+ $("receivedMoney").textContent=money(receivedValue); 
+
+ $("usedMoney").textContent=money(usedValue); 
+
+ $("balanceMoney").textContent=money(balance); 
+
+ const percent=t.received?Math.min(100,t.used/t.received*100):0; 
+
+ $("progress").style.width=percent+"%"; 
+
+ $("consumptionText").textContent=percent.toFixed(1).replace(".",",")+"% do total recebido consumido"; 
+
+ const avg=Number($("dailyAverage").value)||( 
+
+ t.used? t.used/Math.max(1, 
+
+ Math.floor((new Date()-new Date( 
+
+ [...state.withdrawals].sort((a,b)=>a.date.localeCompare(b.date))[0].date+"T00:00:00" 
+
+ ))/86400000)+1):0 
+
+ ); 
+
+ if(avg>0){ 
+
+ const days=Math.floor(t.stock/avg); 
+
+ $("forecast").textContent=days+" dias"; 
+
+ $("forecastText").textContent="Estimativa de duração do estoque"; 
+
+ }else{ 
+
+ $("forecast").textContent="—"; 
+
+ $("forecastText").textContent="Aguardando histórico"; 
+
+ } 
+
+ $("stockAlert").textContent=t.stock<=Number($("minimum").value)? 
+
+ "⚠ ATENÇÃO: estoque atingiu o limite mínimo configurado.":"Estoque acima do limite mínimo."; 
+
+ const month=$("month").value||today.slice(0,7); 
+
+ const list=state.withdrawals.filter(w=>w.date.slice(0,7)===month); 
+
+ const qty=list.reduce((a,w)=>a+Number(w.qty),0); 
+
+ $("monthQty").textContent=qty; 
+
+ $("monthValue").textContent=money(list.reduce((a,w)=>a+costUsed(w),0)); 
+
+ $("monthPeople").textContent=new Set(list.map(w=>w.crm||w.doctor)).size; 
+
+ $("monthAreas").textContent=new Set(list.map(w=>w.area)).size; 
+
+ makeCharts(list); 
+
+ let rows=[]; 
+
+ state.receipts.forEach(r=>rows.push({ 
+
+ date:r.date,type:"Recebimento",name:r.batch, 
+
+ crm:"—",specialty:"—",reason:"Entrada de estoque", 
+
+ area:"—",qty:r.qty,value:Number(r.qty)*Number(r.cost) 
+
+ })); 
+
+ state.withdrawals.forEach(w=>rows.push({ 
+
+ date:w.date,type:"Retirada",name:w.doctor, 
+
+ crm:w.crm,specialty:w.specialty,reason:w.reason, 
+
+ area:w.area,qty:w.qty,value:costUsed(w) 
+
+ })); 
+
+ rows.sort((a,b)=>b.date.localeCompare(a.date)); 
+
+ $("history").innerHTML=rows.map(r=>` 
+
+ <tr> 
+
+ <td>${escapeHTML(r.date.split("-").reverse().join("/"))}</td> 
+
+ <td>${escapeHTML(r.type)}</td> 
+
+ <td>${escapeHTML(r.name)}</td> 
+
+ <td>${escapeHTML(r.crm)}</td> 
+
+ <td>${escapeHTML(r.specialty)}</td> 
+
+ <td>${escapeHTML(r.reason)}</td> 
+
+ <td>${escapeHTML(r.area)}</td> 
+
+ <td>${r.qty}</td> 
+
+ <td>${money(r.value)}</td> 
+
+ </tr>`).join("")||'<tr><td colspan="9">Nenhuma movimentação registrada.</td></tr>'; 
+
+ } 
+
+ function makeCharts(list){ 
+
+ function group(key){ 
+
+ const result={}; 
+
+ list.forEach(w=>{ 
+
+ const name=w[key]||"Não informado"; 
+
+ result[name]=(result[name]||0)+Number(w.qty); 
+
+ }); 
+
+ return result; 
+
+ } 
+
+ if(typeof Chart==="undefined")return; 
+
+ const a=group("reason"),b=group("area"); 
+
+ if(reasonChart)reasonChart.destroy(); 
+
+ if(areaChart)areaChart.destroy(); 
+
+ reasonChart=new Chart($("reasonChart"),{ 
+
+ type:"doughnut", 
+
+ data:{labels:Object.keys(a),datasets:[{data:Object.values(a)}]}, 
+
+ options:{responsive:true,plugins:{legend:{position:"bottom"}}} 
+
+ }); 
+
+ areaChart=new Chart($("areaChart"),{ 
+
+ type:"bar", 
+
+ data:{labels:Object.keys(b),datasets:[{label:"Selos",data:Object.values(b)}]}, 
+
+ options:{responsive:true,plugins:{legend:{display:false}}} 
+
+ }); 
+
+ } 
+
+ function generateQR(){ 
+
+ const link=$("formLink").value.trim(); 
+
+ try{ 
+
+ const url=new URL(link); 
+
+ if(!["https:","http:"].includes(url.protocol))throw new Error(); 
+
+ $("qr").innerHTML='<img alt="QR Code" src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data='+encodeURIComponent(url.href)+'">'; 
+
+ }catch(e){ 
+
+ alert("Informe um link válido iniciado por https://"); 
+
+ } 
+
+ } 
+
+ function downloadQR(){ 
+
+ const img=$("qr").querySelector("img"); 
+
+ if(!img){alert("Gere o QR Code primeiro.");return;} 
+
+ window.open(img.src,"_blank"); 
+
+ } 
+
+ function closeMonth(){ 
+
+ const month=$("month").value; 
+
+ if(!month){alert("Selecione um mês.");return;} 
+
+ const list=state.withdrawals.filter(w=>w.date.slice(0,7)===month); 
+
+ const summary={ 
+
+ month, 
+
+ date:new Date().toISOString(), 
+
+ quantity:list.reduce((a,w)=>a+Number(w.qty),0), 
+
+ value:list.reduce((a,w)=>a+costUsed(w),0), 
+
+ byReason:{}, 
+
+ byArea:{} 
+
+ }; 
+
+ list.forEach(w=>{ 
+
+ summary.byReason[w.reason]=(summary.byReason[w.reason]||0)+Number(w.qty); 
+
+ summary.byArea[w.area]=(summary.byArea[w.area]||0)+Number(w.qty); 
+
+ }); 
+
+ state.closures=state.closures||[]; 
+
+ state.closures=state.closures.filter(c=>c.month!==month); 
+
+ state.closures.push(summary); 
+
+ localStorage.setItem(KEY,JSON.stringify(state)); 
+
+ $("closeMessage").textContent= 
+
+ "Fechamento de "+month+" salvo: "+summary.quantity+ 
+
+ " selos, total de "+money(summary.value)+ 
+
+ ". Faça o backup JSON para arquivar."; 
+
+ } 
+
+ function exportCSV(){ 
+
+ const headers=["Data","Tipo","Profissional/Talão","CRM","Especialidade","Motivo","Área","Quantidade","Valor"]; 
+
+ const rows=[headers]; 
+
+ state.receipts.forEach(r=>rows.push([r.date,"Recebimento",r.batch,"","","","",r.qty,r.qty*r.cost])); 
+
+ state.withdrawals.forEach(w=>rows.push([w.date,"Retirada",w.doctor,w.crm,w.specialty,w.reason,w.area,w.qty,costUsed(w)])); 
+
+ const csv="\ufeff"+rows.map(r=>r.map(v=>'"'+String(v??"").replace(/"/g,'""')+'"').join(";")).join("\r\n"); 
+
+ const blob=new Blob([csv],{type:"text/csv;charset=utf-8"}); 
+
+ const a=document.createElement("a"); 
+
+ a.href=URL.createObjectURL(blob); 
+
+ a.download="controle_selos.csv"; 
+
+ a.click(); 
+
+ URL.revokeObjectURL(a.href); 
+
+ } 
+
+ function backup(){ 
+
+ const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}); 
+
+ const a=document.createElement("a"); 
+
+ a.href=URL.createObjectURL(blob); 
+
+ a.download="backup_selos.json"; 
+
+ a.click(); 
+
+ URL.revokeObjectURL(a.href); 
+
+ } 
+
+ function importBackup(e){ 
+
+ const file=e.target.files[0]; 
+
+ if(!file)return; 
+
+ const reader=new FileReader(); 
+
+ reader.onload=()=>{ 
+
+ try{ 
+
+ const data=JSON.parse(reader.result); 
+
+ if(!Array.isArray(data.receipts)||!Array.isArray(data.withdrawals))throw new Error(); 
+
+ if(confirm("Substituir os dados atuais pelo backup?")){ 
+
+ state=data; 
+
+ persist(); 
+
+ } 
+
+ }catch(err){alert("Arquivo de backup inválido.");} 
+
+ }; 
+
+ reader.readAsText(file); 
+
+ } 
+
+ function clearData(){ 
+
+ if(!confirm("Deseja apagar todos os registros? Faça backup antes."))return; 
+
+ state={receipts:[],withdrawals:[],closures:[]}; 
+
+ persist(); 
+
+ } 
+
+ $("receiptForm").addEventListener("submit",addReceipt); 
+
+ $("withdrawForm").addEventListener("submit",addWithdrawal); 
+
+ $("dailyAverage").addEventListener("input",render); 
+
+ $("minimum").addEventListener("input",render); 
+
+ $("month").addEventListener("change",render); 
+
+ $("receiptDate").value=today; 
+
+ $("date").value=today; 
+
+ $("month").value=today.slice(0,7); 
+
+ load(); 
+
+ render(); 
+
+ </script> 
+
+ </body> 
+
+ </html> 
