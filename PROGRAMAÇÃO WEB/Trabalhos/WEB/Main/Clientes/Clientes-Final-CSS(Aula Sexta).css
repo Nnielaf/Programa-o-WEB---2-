@@ -11,6 +11,8 @@ html,
 body {
     height: 100%;
     background-color: #F8F6F1;
+    font-family: 'Inter', Arial, sans-serif;
+    color: #1C2B24;
 }
 
 body {
@@ -24,108 +26,121 @@ aside {
     position: relative;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     width: 250px;
     height: 100%;
-    padding: 15px;
-    background-color: #12352d;
-    font-size: 15px;
+    padding: 25px 15px;
+    background-color: #0F3B2E;
 }
 
-header p{
-    text-align: right;
-    font-size: 20px;
-    font-weight: 5px;
-}
-
-#Pesquisa{
-    display: flex;
-    flex-direction: row;
-   
-}
-
-#Pesquisa {
-    flex: 1;
-    padding: 12px 16px;
-    font-family: inherit;
-    font-size: 15px;
-    color: #333;
-    background-color: #ffffff;
-    border: 1px solid #d5d9d7;
-    border-radius: 10px;
-    outline: none;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-#Pesquisa::placeholder {
-    color: #8a9692;
-}
-
-#Pesquisa:focus {
-    border-color: #1F5B46;
-    box-shadow: 0 0 0 3px rgba(31, 91, 70, 0.15);
-}
-
-#Pesquisa:hover{
-    font-size: 18px;
-    transition: all 0.5s ease;
-}
-/* Área à direita do aside: botão em cima, tabela + detalhes embaixo */
+/* Área à direita do aside: topo, título e (tabela + detalhes) */
 .principal {
-    flex: 1;                 /* ocupa todo o espaço que sobrou */
+    flex: 1;
     display: flex;
     flex-direction: column;
+    gap: 25px;
+    min-width: 0;
+    padding: 25px 40px;
+    overflow-y: auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 20px;
-    padding: 30px;
-    overflow-y: auto;        /* se o conteúdo crescer, rola só essa área */
-    justify-items: center;
     
+    
+}
+
+header p {
+    font-size: 15px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+#PesquisaTopo {
+    width: 100%;
+    max-width: 500px;
+    padding: 11px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    background-color: #ffffff;
+    border: 1px solid #E7E3DA;
+    border-radius: 8px;
+    outline: none;
+}
+
+#PesquisaTopo:focus,
+.item:focus {
+    border-color: #2E7D5E;
+    box-shadow: 0 0 0 3px rgba(46, 125, 94, 0.15);
+}
+
+/* Título à esquerda, botão à direita */
+.topoPagina {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
 }
 
 .area {
     display: flex;
     gap: 20px;
     align-items: flex-start;
-    margin-block: auto;   /* margem de cima e de baixo automáticas = centraliza na vertical */
+    
 }
 
 .conteiner {
-    flex: 1;                 /* a tabela pega o espaço que sobrar */
+    flex: 1;
     display: flex;
     flex-direction: column;
-    min-width: 0;            /* evita a tabela estourar o layout */
+    min-width: 0;
     padding: 20px;
     background-color: #ffffff;
-    box-shadow: 5px 5px 5px 5px #cac8c8;
-    border-radius: 10px;
+    border: 1px solid #b4ad9b;
+    border-radius: 12px;
 }
-
 
 /* ==========================================================================
    3. NAVEGAÇÃO E LISTAS (MENU DO ASIDE)
    ========================================================================== */
+aside h1 {
+    padding: 0 10px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: #ffffff;
+}
+
 ul {
-    display: grid;
-    position: relative;
-    top: 50px;
-    left: 5px;
-    gap: 10px;
-    min-height: 20vh;
-    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 40px;
     list-style: none;
 }
 
 li {
-    display: flex;
-    align-self: center;
-    padding: 10px;
-    border-radius: 7px;
-    font-size: 20px;
+    border-radius: 8px;
+    font-size: 17px;
+    transition: background-color 0.3s ease;
+}
+
+li a {
+    display: block;
+    padding: 12px 15px;
 }
 
 li:hover {
-    background-color: #2d554b;
-    font-size: 23px;
-    transition: all 0.5s ease;
+    background-color: #1d5444;
+}
+
+/* item da página atual */
+li.ativo {
+    background-color: #2B6A52;
+    font-weight: 600;
 }
 
 a {
@@ -138,92 +153,99 @@ a {
    ========================================================================== */
 form {
     display: flex;
-    padding: 5px;
-    gap: 10px;
-}
-
-.conteiner form .item {
-    flex-grow: 0;
-}
-
-#Pesquisa {
-    flex-grow: 1;
-    width: auto;
-}
-
-.conteiner form select.item {
-    width: 200px;
+    gap: 12px;
+    margin-bottom: 10px;
 }
 
 .item {
-    padding: 10px;
-    border-radius: 5px;
-    border: 0;
-    box-shadow: 1px 1px 1px 1px #c9c9c9;
-    margin-bottom: 15px;     /* era 35px */
-    color: rgb(92, 91, 91);
+    padding: 10px 12px;
+    font-family: inherit;
+    font-size: 13px;
+    color: #6E7B74;
+    background-color: #ffffff;
+    border: 1px solid #E7E3DA;
+    border-radius: 8px;
+    outline: none;
 }
 
-.item:hover {
-    font-size: 14px;
-    transition: all 0.5s ease;
+#Pesquisa {
+    flex: 1;
+    min-width: 0;
+    border-radius: 10px;
+    border: solid 1px black;
+    padding: 5px;
+}
+
+form select.item {
+    width: 190px;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    border-spacing: 5px;
 }
 
 table th,
 table td {
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 14px 10px;
+    font-size: 13px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
-    color: rgb(92, 91, 91);
+    border-bottom: 1px solid #E7E3DA;
 }
 
-/* Corrigido: o nome da classe agora é igual ao do HTML (linha_titulos) */
 th.linha_titulos {
-    font-family: inherit;
-    font-weight: bold;
-    padding-right: 20px;
-    text-align: left;
+    font-size: 12px;
+    font-weight: 500;
+    color: #6E7B74;
 }
 
-/* Largura de cada coluna (soma 100%) */
-table th:nth-child(1) { width: 25%; } /* Nome */
-table th:nth-child(2) { width: 20%; } /* CPF */
-table th:nth-child(3) { width: 20%; } /* Telefone */
-table th:nth-child(4) { width: 20%; } /* Tipo */
-table th:nth-child(5) { width: 15%; } /* Ações */
-
-/* ==========================================================================
-   5. BOTÃO DE CADASTRAR CLIENTE
-   ========================================================================== */
-.cadastroCliente {
-    display: flex;
-    justify-content: flex-end; /* empurra o botão pra direita */
+/* linha selecionada (a que aparece nos detalhes) */
+tr.selecionada {
+    background-color: #F3F7F4;
 }
 
-.cadastroCliente button {
-    background-color: #1F5B46;
-    padding: 11px 20px;
-    color: white;
-    font-family: 'Inter', 'Roboto', 'Arial', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
+/* botões Editar / Excluir */
+.acao {
+    padding: 4px 8px;
+    font-size: 12px;
+    color: #1F5C46;
+    background: transparent;
     border: 0;
     border-radius: 5px;
     cursor: pointer;
-    
 }
 
-.cadastroCliente button:hover {
-    background-color: #184E37;
-    font-size: 15px;
-    transition: all 0.5s ease;
+.acao:hover {
+    background-color: #E9EFEB;
+}
+
+.acao.excluir {
+    color: #D64545;
+}
+
+.acao.excluir:hover {
+    background-color: #FBE9E9;
+}
+
+/* ==========================================================================
+   5. BOTÕES
+   ========================================================================== */
+.cadastroCliente button {
+    padding: 11px 20px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    background-color: #1F5C46;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cadastroCliente button:hover,
+.EditarCadastro button:hover {
+    background-color: #17493a;
 }
 
 /* ==========================================================================
@@ -233,14 +255,35 @@ table th:nth-child(5) { width: 15%; } /* Ações */
     display: flex;
     flex-direction: column;
     gap: 15px;
-    width: 300px;             /* largura fixa, a tabela fica com o resto */
-    padding: 15px;
-    background-color: #d4d1c4;
-    border-radius: 10px;
+    flex-shrink: 0;
+    width: 300px;
+    padding: 20px;
+    background-color: #EFEDE4;
+    border-radius: 12px;
+    border:1px solid #9e9779;
 }
 
 .detalhesCliente p {
-    font-size: 16px;          /* era "1" (sem unidade, não funcionava) */
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.registro {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 1px solid #E7E3DA;
+    border-radius: 10px;
+}
+
+.registro h3 {
+    font-size: 15px;
+}
+
+.registro small {
+    color: #6E7B74;
 }
 
 .informacoesCliente {
@@ -248,8 +291,9 @@ table th:nth-child(5) { width: 15%; } /* Ações */
     flex-direction: column;
     gap: 12px;
     padding: 15px;
-    background-color: rgb(240, 240, 240);
-    border-radius: 5px;
+    background-color: #ffffff;
+    border: 1px solid #E7E3DA;
+    border-radius: 10px;
 }
 
 .informacoesCliente div {
@@ -259,92 +303,67 @@ table th:nth-child(5) { width: 15%; } /* Ações */
     font-size: 14px;
 }
 
+.informacoesCliente dt {
+    font-size: 12px;
+    color: #6E7B74;
+}
+
 .EditarCadastro button {
     width: 100%;
-    padding: 8px;
-    border: 0;
-    border-radius: 5px;
-    font-size: 16px;
-    background-color: #1F5B46;
+    padding: 11px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
     color: white;
+    background-color: #1F5C46;
+    border: 0;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 /* ==========================================================================
-   7. ELEMENTOS DE TEXTO E TIPOGRAFIA
+   7. TÍTULO DA PÁGINA
    ========================================================================== */
-h1 {
-    color: #ffffff;
-}
-
-h1:hover {
-    font-size: 33px;
-    transition: all 0.5s ease;
-}
-
 .titulo dt {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 40px;
-    font-weight: 700;
-    line-height: 1.1;
-    color: #12352d;
-    margin-bottom: 6px;   
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.2;
 }
 
 .titulo dd {
-     font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
-    font-size: 16px;
-    color: #6b7a75;
+    font-size: 15px;
+    color: #6E7B74;
 }
 
 /* ==========================================================================
-   8. RODAPÉ (FOOTER)
+   8. RODAPÉ DO MENU
    ========================================================================== */
 footer {
-    display: flex;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 18px;
-}
-
-footer p {
-    position: absolute;
-    bottom: 80px;
+    margin-top: auto;      /* empurra o rodapé para o fim do aside */
+    padding: 0 10px;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 17px;
     color: #ffffff;
 }
 
 .linha {
-    display: flex;
-    position: absolute;
-    bottom: 80px;
-    width: 100px;
+    width: 30px;
     height: 1px;
+    margin-bottom: 12px;
     background-color: white;
 }
 
 /* ==========================================================================
-   RESPONSIVO (colar no FINAL do Style.css, nesta ordem)
+   RESPONSIVO
    ========================================================================== */
 
-/* ---------- NOTEBOOK PEQUENO / TABLET DEITADO (até 1100px) ---------- */
+/* ---------- Tablet (até 1100px): detalhes vai para baixo da tabela ---------- */
 @media (max-width: 1100px) {
-    aside {
-        width: 200px;
-    }
-
-    .detalhesCliente {
-        width: 260px;
-    }
-
-    .conteiner form select.item {
-        width: 160px;
-    }
-}
-
-/* ---------- TABLET (até 900px) ---------- */
-@media (max-width: 900px) {
     .area {
-        flex-direction: column;   /* tabela em cima, detalhes embaixo */
-        align-items: stretch;     /* as duas caixas ocupam a largura toda */
+        flex-direction: column;
+        align-items: stretch;
     }
 
     .detalhesCliente {
@@ -352,68 +371,53 @@ footer p {
     }
 }
 
-/* ---------- CELULAR (até 600px) ---------- */
-@media (max-width: 600px) {
-
-    /* menu lateral vira uma barra no topo */
+/* ---------- Celular (até 700px): menu vira barra no topo ---------- */
+@media (max-width: 700px) {
     body {
         flex-direction: column;
+        height: auto;
     }
 
     aside {
         width: 100%;
         height: auto;
-        flex-shrink: 0;
-    }
-
-    ul {
-        display: flex;
-        flex-wrap: wrap;
-        top: 0;
-        left: 0;
-        min-height: 0;
-        margin-top: 10px;
-    }
-
-    li,
-    li:hover {
-        font-size: 16px;
-    }
-
-    footer {
-        display: none;            /* o rodapé do menu não cabe no celular */
-    }
-
-    /* espaçamentos menores */
-    .principal {
         padding: 15px;
     }
 
-    .busca-topo {
-        max-width: none;
+    ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 10px;
     }
 
-    .cabecalho-pagina {
+    li {
+        font-size: 15px;
+    }
+
+    footer {
+        display: none;
+    }
+
+    .principal {
+        padding: 15px;
+        overflow-y: visible;
+    }
+
+    .topoPagina {
         flex-direction: column;
         align-items: flex-start;
-        gap: 15px;
     }
 
-    .titulo-pagina h2 {
-        font-size: 32px;
+    .titulo dt {
+        font-size: 28px;
     }
 
-    /* filtros um embaixo do outro */
-    .conteiner form {
+    form {
         flex-direction: column;
     }
 
-    .conteiner form select.item {
+    form select.item {
         width: 100%;
-    }
-
-    .item {
-        margin-bottom: 0;
     }
 
     /* tabela rola para o lado em vez de quebrar */
